@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartementController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganizationController;
 
@@ -35,8 +36,12 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middl
 Route::middleware('auth')->group(
     function () {
         Route::get('/organisasi', [OrganizationController::class, 'index'])->name('organisasi.index');
-        Route::get('/organisasi/{organization}', [OrganizationController::class, 'show'])->name('organisasi.index');
+        Route::get('/organisasi/{organization}', [OrganizationController::class, 'show'])->name('organisasi.show');
         Route::get('/organisasi-create', [OrganizationController::class, 'create'])->name('organisasi.create');
         Route::post('/organisasi-create', [OrganizationController::class, 'store'])->name('organisasi.store');
+        // Departement
+        Route::get('/struktur', [DepartementController::class, 'index'])->name('departement.index');
+        Route::get('/struktur/create', [DepartementController::class, 'create'])->name('departement.create');
+        Route::post('/struktur/create', [DepartementController::class, 'store'])->name('departement.store');
     }
 );

@@ -1,6 +1,6 @@
 <header class="bg-fourth text-primary w-full sticky relative top-0 z-50"
     style="box-shadow: 0px 0px 10px 0px black !important;">
-    <nav class="flex justify-between py-2 px-4 items-center">
+    <nav class="flex justify-between py-3 px-4 items-center">
         {{-- kiri Nav --}}
         {{-- Logo --}}
         <div class="flex">

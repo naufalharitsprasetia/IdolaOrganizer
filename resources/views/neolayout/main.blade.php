@@ -29,8 +29,10 @@
     {{-- Nav --}}
     @include('neolayout.sidebar')
     {{-- CONTENT --}}
-    <div class="ml-[22vw]">
-        @yield('content')
+    <div class="ml-[22vw] pt-12">
+        <div class=" mb-12 bg-fourth text-primary border-4 border-dashed border-secondary mx-6 rounded-lg p-5">
+            @yield('content')
+        </div>
     </div>
     {{-- CONTENT --}}
 

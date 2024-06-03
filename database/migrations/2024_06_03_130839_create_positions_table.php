@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('organization_strukturs', function (Blueprint $table) {
+        Schema::create('positions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('organization_id');
-            $table->foreign('organization_id')->references('id')->on('organizations')->onDelete('restrict');
-            $table->string('position');
+            $table->unsignedBigInteger('departements_id');
+            $table->string('name');
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('departements_id')->references('id')->on('departements')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('positions')->onDelete('cascade');
         });
     }
 
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('organization_strukturs');
+        Schema::dropIfExists('positions');
     }
 };

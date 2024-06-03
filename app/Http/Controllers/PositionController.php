@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OrganizationStruktur;
+use App\Models\Position;
 use Illuminate\Http\Request;
 
-class OrganizationStrukturController extends Controller
+class PositionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class OrganizationStrukturController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrganizationStruktur $organizationStruktur)
+    public function show(Position $position)
     {
         //
     }
@@ -42,7 +42,7 @@ class OrganizationStrukturController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OrganizationStruktur $organizationStruktur)
+    public function edit(Position $position)
     {
         //
     }
@@ -50,7 +50,7 @@ class OrganizationStrukturController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, OrganizationStruktur $organizationStruktur)
+    public function update(Request $request, Position $position)
     {
         //
     }
@@ -58,7 +58,7 @@ class OrganizationStrukturController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OrganizationStruktur $organizationStruktur)
+    public function destroy(Position $position)
     {
         //
     }

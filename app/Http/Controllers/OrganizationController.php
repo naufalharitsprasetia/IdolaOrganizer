@@ -16,7 +16,6 @@ class OrganizationController extends Controller
         $organizations = Organization::all();
         return view('organisasi.index', [
             'active' => 'organisasi',
-            'title' => 'organisasi',
             'organizations' => $organizations
         ]);
     }
@@ -29,7 +28,6 @@ class OrganizationController extends Controller
         //
         return view('organisasi.create', [
             'active' => 'organisasi',
-            'title' => 'organisasi'
         ]);
     }
 
@@ -65,8 +63,7 @@ class OrganizationController extends Controller
     {
         //
         return view('organisasi.show', [
-            'active' => 'organisasi',
-            'title' => 'organisasi',
+            'active' => 'dashboard',
             'organization' => $organization
         ]);
     }

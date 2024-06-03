@@ -1,0 +1,40 @@
+Tutorial Instalasi Project SIBETA (Laravel) :
+
+1. Download & Install Laragon atau Xampp terlebih dahulu (apache,mysql).
+
+2. Extract sibeta.zip dan taruh di folder www (laragon) / htdocs (xampp).
+
+3. download dan install NPM dan Composer terlebih dahulu. jika ragu, silahkan cek terlebih dahulu, ketik "composer -v" dan "npm -v" di terminal, fyi: saya memakai (Composer version 2.5.8) dan (git version 2.37.3.windows.1)
+
+4. buka terminal , masuk ke direktori xampp/htdocs/sibeta atau laragon/www/sibeta.
+
+5. ketik/jalankan "composer --self update" (untuk menginstall package/module di aplikasi ini)
+
+6. Rename .env.example menjadi .env (untuk konfigurasi aplikasinya) //
+
+7. ketik/jalankan "php artisan key:generate" (untuk membuat APP_KEY nya) // 
+
+8. buka phpmyadmin atau mysql , selanjutnya buatlah Database (terserah namanya) didalam mysql (phpmyadmin) *
+
+9. buka file .env yang tadi dalam code editor anda, sesuaikan konfigurasi Databasenya di .env :
+
+DB_DATABASE= (isikan dengan nama Database yang tadi anda buat)
+DB_USERNAME=root (defaultnya root, jika di device anda berbeda maka ganti saja)
+DB_PASSWORD= (defaultnya kosong, jika di device anda berbeda maka ganti saja)
+
+10. ketik/jalankan "php artisan migrate:fresh --seed" untuk menjalankan migrasi dan seeder nya.
+
+11. jalankan aplikasi di terminal ketik "php artisan serve"
+
+12. ctrl+klik di terminal atau buka di browser "http://127.0.0.1:8000" 
+
+13. Selesai !! anda telah berhasil.
+
+
+NB : 
+1. Jika ada kendala dalam menjalankan aplikasinya , silahkan hubungi No saya : 0812-2059-4202 (WhatsApp) A.N (Naufal Harits P)
+
+2. Ada Akun Admin yang memiliki akses untuk mengelola materi, bab, latihan, soal, dan jawaban Ilmu Tajwid.:
+(akun admin)
+email = admin@gmail.com
+password = admin123
