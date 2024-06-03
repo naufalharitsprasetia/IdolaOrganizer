@@ -13,10 +13,32 @@
         rel="stylesheet">
     {{-- Font AWESOME --}}
     <script src="https://kit.fontawesome.com/0e361b3f2b.js" crossorigin="anonymous"></script>
-    {{-- Own CSS --}}
+    {{-- own Style CSS --}}
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Idola Organizer</title>
 </head>
 
-<body>
+<body class="h-[3000px]">
+
+    {{-- Sweet Alert --}}
+    @include('sweetalert::alert')
+
+    {{-- Nav --}}
+
+    {{-- Nav --}}
+    @include('neolayout.sidebar')
+    {{-- CONTENT --}}
+    <div class="ml-[22vw]">
+        @yield('content')
+    </div>
+    {{-- CONTENT --}}
+
+    {{-- Script / JS --}}
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+    <script type="text/javascript" src="/js/vanilla-tilt.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AuthController extends Controller
 {
@@ -42,41 +43,19 @@ class AuthController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+            Alert::alert('Berhasil', 'selamat ! anda berhasil masuk !', 'Success');
             return redirect('/')->with('success', 'Selamat ! anda berhasil Masuk');
         }
-        return back()->with('loginError', 'Login Failed!');
-    }
-
-    public function addUser(Request $request)
-    {
-        // dd($request->all());
-
-        $rules = [
-            'name' => 'required|min:3',
-            'email' => 'required|email|unique:users',
-            'user_password' => 'required|min:6|confirmed',
-        ];
-
-        $request->validate($rules);
-
-        $user = new User();
-        $user->user_id = Str::uuid();
-        $user->user_nama = $request->user_name;
-        $user->user_username = $request->user_name;
-        $user->user_email = $request->user_email;
-        $user->user_password = Hash::make($request->user_password);
-        $user->user_role = 'user';
-        $user->save();
-
-        if ($user) {
-            return redirect()->route('home.sign-in')->with('success', 'Akun berhasil dibuat');
-        } else {
-            return redirect()->back()->with('error', 'Oooops... ada yang salah nih');
-        }
+        return redirect()->back()->with('loginError', 'Login Failed!');
     }
 
     public function logout(Request $request)
     {
+
+        $title = 'Apakah Anda ingin Logout !';
+        $text = "pastikan semua progress sudah tersimpan!";
+        confirmDelete($title, $text);
+
         Auth::logout();
 
         $request->session()->invalidate();
@@ -84,5 +63,38 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function register()
+    {
+        return view('register', [
+            'active' => 'register',
+            'title' => 'Register'
+        ]);
+    }
+
+    public function addUser(Request $request)
+    {
+        // dd($request->all());
+
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email:dns|unique:users',
+            'password' => 'required|min:6',
+        ];
+
+        $request->validate($rules);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        if ($user) {
+            return redirect()->route('login')->with('success', 'Akun berhasil dibuat');
+        } else {
+            return redirect()->back()->with('error', 'Oooops... ada yang salah nih');
+        }
     }
 }
