@@ -10,4 +10,32 @@ class Departement extends Model
     use HasFactory;
     protected $table = 'departements';
     protected $guarded = ['id'];
+    protected $with = ['organization'];
+
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'departements_id');
+    }
+    public function members()
+    {
+        return $this->hasMany(Member::class, 'departements_id');
+    }
+    public function prokers()
+    {
+        return $this->hasMany(WorkProgram::class, 'departements_id');
+    }
+    public function tasks()
+    {
+        return $this->hasMany(Task::class, 'departements_id');
+    }
+    public function positions()
+    {
+        return $this->hasMany(Position::class, 'departements_id');
+    }
+
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class, 'organization_id');
+    }
 }

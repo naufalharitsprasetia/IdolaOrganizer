@@ -23,6 +23,9 @@ export default {
       fontFamily: {
         lato: ["Lato"],
       },
+      animation: {
+        "bounce-slow": "bounce 3.5s linear infinite",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

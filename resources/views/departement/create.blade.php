@@ -2,9 +2,9 @@
 
 @section('content')
     {{-- organization section --}}
-    <div class="struktur-organization">
+    <div class="struktur-organization relative">
+        <a href="/struktur?org={{ $organization->id }}" class="button-primary absolute right-2 top-2">Back</a>
         <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Struktur Organisasi</h2>
-
         {{-- Form Start --}}
         <form class="space-y-6" action="/struktur/create" method="POST">
             @csrf
@@ -43,20 +43,18 @@
                 </div>
             </div>
             {{-- Input 2 --}}
-            <div>
-                <label for="parent_id" class="text-primary font-bold">Parent ID
-                </label>
+            {{-- Input 3 --}}
+            <div class="sm:col-span-3">
+                <label for="parent_id" class="block leading-6 text-primary font-bold">Parent ID <a href=""
+                        class=" mx-2 text-sm font-medium text-blue-500">(Penjelasan)</a></label>
                 <div class="mt-2">
-                    <input id="parent_id" name="parent_id" type="text"
-                        class="input-form-group @error('parent_id')
-                                input-wrong
-                            @enderror "
-                        value="{{ old('parent_id') }}">
-                    @error('parent_id')
-                        <div class="label-error">
-                            error : {{ $message }}
-                        </div>
-                    @enderror
+                    <select id="parent_id" name="parent_id"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="">NONE</option>
+                        @foreach ($departements as $departement)
+                            <option value="{{ $departement->id }}">{{ $departement->name_departement }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
 

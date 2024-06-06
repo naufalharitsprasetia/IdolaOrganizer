@@ -15,7 +15,7 @@ class AuthController extends Controller
     //
     public function login()
     {
-        return view('login', [
+        return view('auth.login', [
             'active' => 'login',
             'title' => 'Login'
         ]);
@@ -38,7 +38,7 @@ class AuthController extends Controller
         //     return redirect()->back()->with('loginError', 'Login gagal!');
         // }
         $credentials = $request->validate([
-            'email' => 'required|email:dns',
+            'email' => 'required|email',
             'password' => 'required'
         ]);
         if (Auth::attempt($credentials)) {
@@ -67,7 +67,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('register', [
+        return view('auth.register', [
             'active' => 'register',
             'title' => 'Register'
         ]);
@@ -79,7 +79,7 @@ class AuthController extends Controller
 
         $rules = [
             'name' => 'required',
-            'email' => 'required|email:dns|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ];
 

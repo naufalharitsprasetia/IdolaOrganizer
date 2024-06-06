@@ -4,7 +4,7 @@
     <section id="organization" class="pt-14 pb-28 bg-primary text-fourth w-full px-20">
 
         <div class="container-mx-auto">
-            <a href="/organisasi" class="button-secondary ">Back</a>
+            <a href="/organisasi" class="button-secondary shadow-lg">Back</a>
             <h2 class="text-2xl font-semibold border-dashed border-2 border-fourth inline-block p-2">Buat Organisasi Baru
             </h2>
             {{-- Form Start --}}
@@ -100,7 +100,7 @@
 
                 <div>
                     <button type="submit"
-                        class="flex w-1/3 justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Daftar</button>
+                        class="shadow-xl flex w-1/3 justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Daftar</button>
                 </div>
 
             </form>

@@ -8,6 +8,14 @@ body {
   font-family: "Poppins", sans-serif;
   @apply bg-primary;
 }
+.gradient-divider {
+  height: 60px; /* Adjust the height as needed */
+  background: linear-gradient(
+    to bottom,
+    rgb(175 143 111),
+    rgb(234 216 192)
+  ); /*third */
+}
 .input-wrong {
   @apply border-2 border-rose-600;
 }

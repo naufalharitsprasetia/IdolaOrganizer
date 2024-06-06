@@ -28,6 +28,11 @@ class UserSeeder extends Seeder
                 'email' => 'fulan@gmail.com',
                 'password' => Hash::make('123456789'),
             ],
+            [
+                'name' => 'Naufal Harits Prasetia',
+                'email' => 'naufal@gmail.com',
+                'password' => Hash::make('bismillah'),
+            ],
         ];
 
         // Insert data ke dalam tabel 'users'

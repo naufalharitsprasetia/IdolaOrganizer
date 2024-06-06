@@ -20,3 +20,4 @@
 </head>
 
 <body>
+    <main class="min-h-screen">

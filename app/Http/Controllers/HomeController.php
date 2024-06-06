@@ -17,7 +17,7 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view('home', [
+        return view('home.home', [
             'active' => 'home',
             'title' => 'home'
         ]);
@@ -25,7 +25,7 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('contact', [
+        return view('home.contact', [
             'active' => 'contact',
             'title' => 'contact'
         ]);
@@ -33,7 +33,7 @@ class HomeController extends Controller
 
     public function about()
     {
-        return view('about', [
+        return view('home.about', [
             'active' => 'about',
             'title' => 'about'
         ]);

@@ -1,11 +1,21 @@
 /** @format */
+// Dropdown Navbar
+const navbarResponsive = document.querySelector('[role="navbar"]');
+const dropdownBurger = document.querySelector("#burger-menu");
 
+dropdownBurger.addEventListener("click", function () {
+  navbarResponsive.classList.toggle("hidden"); // nav responsive
+});
+// DROPDOWN PROFILE DI MD screen
 const dropdownProfile = document.querySelector('[role="menu"]');
 const menuButton = document.querySelector("#menu-button");
 
 // Klik di Luar Hamburger
 window.addEventListener("click", function (e) {
   console.log(e.target);
+  if (e.target != dropdownBurger && e.target != navbarResponsive) {
+    navbarResponsive.classList.add("hidden"); // nav responsive
+  }
   if (e.target != menuButton && e.target != dropdownProfile) {
     dropdownProfile.classList.add("hidden");
   }
@@ -36,6 +46,11 @@ function confirmLogout() {
   });
 }
 new TypeIt("#welcome-back", {
+  strings: "Welcome Back, ",
+  speed: 200,
+  loop: true,
+}).go();
+new TypeIt("#welcome-back-responsive", {
   strings: "Welcome Back, ",
   speed: 200,
   loop: true,

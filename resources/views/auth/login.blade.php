@@ -16,7 +16,7 @@
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-16 w-auto" src="/img/logoy.png" alt="Your Company">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-third">Sign in to your
                 account
             </h2>
         </div>
@@ -35,7 +35,7 @@
             <form class="space-y-6" action="/login" method="POST">
                 @csrf
                 <div>
-                    <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email
+                    <label for="email" class="block text-sm font-medium leading-6 text-third">Email
                         address</label>
                     <div class="mt-2">
                         <input id="email" name="email" type="email" autocomplete="email" required
@@ -52,7 +52,7 @@
 
                 <div>
                     <div class="flex items-center justify-between">
-                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                        <label for="password" class="block text-sm font-medium leading-6 text-third">Password</label>
                         <div class="text-sm">
                             <a href="#" class="font-semibold text-fourth hover:text-fourth">Forgot
                                 password?</a>
@@ -78,7 +78,7 @@
                 </div>
             </form>
 
-            <p class="mt-10 text-center text-sm text-gray-500">
+            <p class="mt-10 text-center text-sm text-third">
                 Belum punya akun ?
                 <a href="/register" class="font-semibold leading-6 text-fourth hover:text-fourth">Daftar
                     Sekarang</a>

@@ -13,7 +13,17 @@ class OrganizationController extends Controller
      */
     public function index()
     {
-        $organizations = Organization::all();
+        // $organizations = Organization::all();
+        $user = Auth::user();
+
+        // Organisasi yang dibuat oleh user
+        $ownedOrganizations = $user->organizations;
+
+        // Organisasi di mana user merupakan member
+        $memberOrganizations = $user->memberOrganizations;
+
+        // Gabungkan hasil
+        $organizations = $ownedOrganizations->merge($memberOrganizations);
         return view('organisasi.index', [
             'active' => 'organisasi',
             'organizations' => $organizations

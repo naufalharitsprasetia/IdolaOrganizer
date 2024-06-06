@@ -3,63 +3,74 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use App\Models\Organization;
+use App\Models\Departement;
+use App\Models\Position;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $deptId = intval($_GET['dept']);
+        $departement = Departement::find($deptId);
+        $organization = Organization::find($departement->organization_id);
+        $positions = Position::where('departements_id', $deptId)->get();
+        // dd($organization);
+        return view('member.create', [
+            'active' => 'member',
+            'organization' => $organization,
+            'departement' => $departement,
+            'positions' => $positions,
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        // Validasi input
+        $validatedData = $request->validate([
+            'name_member' => 'required|string|max:255',
+            'email_member' => 'nullable|string',
+            'phone_member' => 'nullable|string',
+            'address_member' => 'nullable|string',
+            'departements_id' => 'required|string',
+            'position_id' => 'required',
+        ]);
+        $departement = Departement::find($request->input('departements_id'));
+        $validatedData['organizations_id'] = $departement->organization->id;
+        Member::create($validatedData);
+
+        // Redirect dengan pesan sukses
+        return redirect()->route('departement.show', ['departement' => $request->input('departements_id')])->with('success', 'Member created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Member $member)
     {
-        //
+        $departement =  $member->departement;
+        $organization =  $member->organization;
+        // dd($member);
+        return view('member.show', [
+            'active' => 'member',
+            'member' => $member,
+            'organization' => $organization,
+            'departement' => $departement,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(Member $member)
     {
-        //
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Member $member)
     {
-        //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Member $member)
     {
-        //
     }
 }

@@ -1,6 +1,6 @@
 <header class="bg-fourth text-primary w-full sticky relative top-0 z-50"
     style="box-shadow: 0px 0px 10px 0px black !important;">
-    <nav class="flex justify-between py-3 px-4 items-center">
+    <nav class="hidden md:flex justify-between py-3 px-4 items-center">
         {{-- kiri Nav --}}
         {{-- Logo --}}
         <div class="flex">
@@ -13,7 +13,7 @@
                     <a href="/"><i class="fa-solid fa-house"></i> Home</a>
                 </li>
                 <li class="mx-2 hover:text-yellow-800 {{ $active === 'organisasi' ? 'text-yellow-800' : '' }}">
-                    <a href="/organisasi"><i class="fa-solid fa-sitemap"></i> Organization</a>
+                    <a href="/organisasi"><i class="fa-solid fa-sitemap"></i> Manage Your Organization</a>
                 </li>
                 <li class="mx-2 hover:text-yellow-800 {{ $active === 'about' ? 'text-yellow-800' : '' }}">
                     <a href="/about"><i class="fa-solid fa-circle-info"></i> About</a>
@@ -48,27 +48,16 @@
                                 <img src="/img/avatar.jpg" alt="" class="w-10 " id="menu-button">
                             </button>
                         </div>
-                        {{--  Dropdown menu, show/hide based on menu state.
-                        Entering: "transition ease-out duration-100"
-                        From: "transform opacity-0 scale-95"
-                        To: "transform opacity-100 scale-100"
-                        Leaving: "transition ease-in duration-75"
-                        From: "transform opacity-100 scale-100"
-                        To: "transform opacity-0 scale-95"
-                        --}}
                         <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
                             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                             <div class="py-1" role="none">
                                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem"
-                                    tabindex="-1" id="menu-item-0">Account settings</a>
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem"
-                                    tabindex="-1" id="menu-item-1">Support</a>
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem"
-                                    tabindex="-1" id="menu-item-2">License</a>
+                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300"
+                                    role="menuitem" tabindex="-1">Profile</a>
                                 <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                     @csrf
-                                    <button type="button" class="text-gray-700 block w-full px-4 py-2 text-left text-sm"
+                                    <button type="button"
+                                        class="text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-gray-300"
                                         role="menuitem" tabindex="-1" id="menu-item-3"
                                         onclick="confirmLogout()">Logout</button>
                                 </form>
@@ -79,5 +68,60 @@
                 </div>
             @endauth
         </div>
+    </nav>
+    <nav class="relative flex md:hidden justify-between py-3 px-4 items-center">
+        <div class="logo">
+            <a href="/">
+                <img src="/img/logox.png" class="w-20" alt="">
+            </a>
+        </div>
+        {{-- Dropdown --}}
+        <div class="relative inline-block">
+            {{-- <i class="fa-solid fa-bars fa-lg" id="burger-menu"></i> --}}
+            <button type="button" class="hover:-rotate-90 transition ease-in-out duration-300 text-primary"
+                id="burger-menu"></button>
+            <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
+                role="navbar" aria-orientation="vertical" tabindex="-1">
+                <div class="py-1" role="none">
+                    <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+                    <a href="/"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 {{ $active === 'home' ? 'bg-gray-300' : '' }}"
+                        role="menuitem" tabindex="-1">Home</a>
+                    <a href="/organisasi"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300  {{ $active === 'organisasi' ? 'bg-gray-300' : '' }}"
+                        role="menuitem" tabindex="-1">Organization</a>
+                    <a href="/about"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 {{ $active === 'about' ? 'bg-gray-300' : '' }}"
+                        role="menuitem" tabindex="-1">About</a>
+                    <a href="/contact"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 {{ $active === 'contact' ? 'bg-gray-300' : '' }}"
+                        role="menuitem" tabindex="-1">Contact Us</a>
+                    <hr>
+                    @auth
+                        <a href="#"
+                            class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 {{ $active === 'profile' ? 'bg-gray-300' : '' }}"
+                            role="menuitem" tabindex="-1"><span id="welcome-back-responsive">
+                            </span><br>{{ auth()->user()->name }}</a>
+                        <hr>
+                        <a href="#"
+                            class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 {{ $active === 'profile' ? 'bg-gray-300' : '' }}"
+                            role="menuitem" tabindex="-1">Profile</a>
+                        <form id="logout-form" method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="button"
+                                class="text-gray-700 block w-full px-4 py-2 text-left text-sm hover:bg-gray-300"
+                                role="menuitem" tabindex="-1" id="menu-item-3"
+                                onclick="confirmLogout()">Logout</button>
+                        </form>
+                    @else
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 "
+                            role="menuitem" tabindex="-1">Login</a>
+                        <a href="#" class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 "
+                            role="menuitem" tabindex="-1">Register</a>
+                    @endauth
+                </div>
+            </div>
+        </div>
+        {{-- End Dropdown --}}
     </nav>
 </header>

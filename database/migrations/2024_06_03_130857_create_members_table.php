@@ -13,18 +13,20 @@ return new class extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('organizations_id');
             $table->unsignedBigInteger('departements_id');
             $table->unsignedBigInteger('position_id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('phone')->nullable();
-            $table->text('address')->nullable();
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
-            $table->timestamps();
-
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('name_member');
+            $table->string('email_member')->unique()->nullable();
+            $table->string('phone_member')->nullable();
+            $table->text('address_member')->nullable();
+            $table->boolean('status_active')->default(true);
             $table->foreign('departements_id')->references('id')->on('departements')->onDelete('cascade');
             $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');
+            $table->foreign('organizations_id')->references('id')->on('organizations')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

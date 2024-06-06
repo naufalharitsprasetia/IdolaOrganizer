@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Departement;
+use App\Models\Event;
 use App\Models\Organization;
+use App\Models\Position;
+use App\Models\Member;
+use App\Models\Task;
+use App\Models\WorkProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,9 +38,11 @@ class DepartementController extends Controller
     {
         $orgId = intval($_GET['org']);
         $organization = Organization::find($orgId);
+        $departements = Departement::where('organization_id', $orgId)->get();
         // dd($organization);
         return view('departement.create', [
             'active' => 'struktur',
+            'departements' => $departements,
             'organization' => $organization
         ]);
     }
@@ -65,6 +72,23 @@ class DepartementController extends Controller
     public function show(Departement $departement)
     {
         //
+        $organization = Organization::find($departement->organization_id);
+        $positions = Position::where('departements_id', $departement->id)->get();
+        $members = Member::where('departements_id', $departement->id)->get();
+        $prokers = WorkProgram::where('departements_id', $departement->id)->get();
+        $tasks = Task::where('departements_id', $departement->id)->get();
+        $events = Event::where('departements_id', $departement->id)->get();
+        // dd($organization);
+        return view('departement.show', [
+            'active' => 'struktur',
+            'organization' => $organization,
+            'departement' => $departement,
+            'positions' => $positions,
+            'members' => $members,
+            'prokers' => $prokers,
+            'tasks' => $tasks,
+            'events' => $events,
+        ]);
     }
 
     /**
