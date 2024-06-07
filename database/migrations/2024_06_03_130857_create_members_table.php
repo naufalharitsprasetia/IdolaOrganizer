@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('position_id');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('name_member');
-            $table->string('email_member')->unique()->nullable();
+            $table->string('email_member')->nullable();
             $table->string('phone_member')->nullable();
             $table->text('address_member')->nullable();
             $table->boolean('status_active')->default(true);

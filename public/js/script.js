@@ -1,10 +1,12 @@
 /** @format */
 // Dropdown Navbar
 const navbarResponsive = document.querySelector('[role="navbar"]');
+const mainblade = document.querySelector("#mainblade");
 const dropdownBurger = document.querySelector("#burger-menu");
 
 dropdownBurger.addEventListener("click", function () {
   navbarResponsive.classList.toggle("hidden"); // nav responsive
+  mainblade.classList.toggle("ml-[30vw]"); // nav responsive
 });
 // DROPDOWN PROFILE DI MD screen
 const dropdownProfile = document.querySelector('[role="menu"]');
@@ -15,6 +17,7 @@ window.addEventListener("click", function (e) {
   console.log(e.target);
   if (e.target != dropdownBurger && e.target != navbarResponsive) {
     navbarResponsive.classList.add("hidden"); // nav responsive
+    mainblade.classList.remove("ml-[30vw]"); // nav responsive
   }
   if (e.target != menuButton && e.target != dropdownProfile) {
     dropdownProfile.classList.add("hidden");
@@ -46,12 +49,34 @@ function confirmLogout() {
   });
 }
 new TypeIt("#welcome-back", {
-  strings: "Welcome Back, ",
+  strings: "Selamat Datang, ",
   speed: 200,
   loop: true,
 }).go();
 new TypeIt("#welcome-back-responsive", {
-  strings: "Welcome Back, ",
+  strings: "Selamat Datang, ",
   speed: 200,
   loop: true,
 }).go();
+
+// Get the button
+let mybutton = document.getElementById("myBtnTop");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function () {
+  scrollFunction();
+};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}

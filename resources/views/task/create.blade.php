@@ -3,7 +3,7 @@
 @section('content')
     {{-- organization section --}}
     <div class="struktur-organization relative">
-        <a href="/struktur/{{ $departement->id }}" class="button-primary absolute right-2 top-2">Back</a>
+        <a href="/struktur/{{ $departement->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
         <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Create Task - Departement :
             {{ $departement->name_departement }} - ({{ $organization->singkatan_organization }})</h2>
 
@@ -21,7 +21,7 @@
             </div>
             {{-- Input  --}}
             <div>
-                <label for="name_task" class="text-primary font-bold">Nama Tugas</label>
+                <label for="name_task" class="text-primary font-bold">Nama Tugas*</label>
                 <div class="mt-2">
                     <input id="name_task" name="name_task" type="text" required
                         class="input-form-group @error('name_task')
@@ -38,9 +38,9 @@
             {{-- Input  --}}
             {{-- Input 2 --}}
             <div>
-                <label for="description" class="text-primary font-bold">Deskripsi</label>
+                <label for="description" class="text-primary font-bold">Deskripsi (optional)</label>
                 <div class="mt-2">
-                    <input id="description" name="description" type="text" required
+                    <input id="description" name="description" type="text"
                         class="input-form-group @error('description')
                                 input-wrong
                             @enderror "
@@ -54,7 +54,7 @@
             </div>
             {{-- Input 3 --}}
             <div>
-                <label for="due_date" class="text-primary font-bold">Deadline</label>
+                <label for="due_date" class="text-primary font-bold">Deadline*</label>
                 <div class="mt-2">
                     <input id="due_date" name="due_date" type="date" required
                         class="input-form-group @error('due_date')

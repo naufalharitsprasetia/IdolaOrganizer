@@ -3,7 +3,7 @@
 @section('content')
     {{-- organization section --}}
     <div class="struktur-organization relative">
-        <a href="/struktur?org={{ $organization->id }}" class="button-primary absolute right-2 top-2">Back</a>
+        <a href="/struktur?org={{ $organization->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
         <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Struktur Organisasi</h2>
         {{-- Form Start --}}
         <form class="space-y-6" action="/struktur/create" method="POST">
@@ -27,10 +27,9 @@
             </div>
             {{-- Input 2 --}}
             <div>
-                <label for="description" class="text-primary font-bold">Deskripsi
-                    *</label>
+                <label for="description" class="text-primary font-bold">Deskripsi (optional)</label>
                 <div class="mt-2">
-                    <input id="description" name="description" type="text" required
+                    <input id="description" name="description" type="text"
                         class="input-form-group @error('description')
                                 input-wrong
                             @enderror "

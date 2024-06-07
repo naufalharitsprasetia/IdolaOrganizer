@@ -13,6 +13,18 @@ class MemberController extends Controller
 {
     public function index()
     {
+        $orgId = intval($_GET['org']);
+        $organization = Organization::find($orgId);
+        // Asumsi Organization dan Department model sudah di-setup dengan benar
+        $departements = Departement::where('organization_id', $orgId)
+            ->with('members')
+            ->get();
+
+        return view('member.index', [
+            'active' => 'member',
+            'organization' => $organization,
+            'departements' => $departements
+        ]);
     }
 
     public function create()

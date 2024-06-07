@@ -97,4 +97,12 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Oooops... ada yang salah nih');
         }
     }
+
+    public function profile()
+    {
+        return view('auth.profile', [
+            'active' => 'profile',
+            'title' => 'profile'
+        ]);
+    }
 }

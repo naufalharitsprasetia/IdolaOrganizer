@@ -3,7 +3,7 @@
 @section('content')
     {{-- organization section --}}
     <div class="struktur-organization relative">
-        <a href="/struktur/{{ $departement->id }}" class="button-primary absolute right-2 top-2">Back</a>
+        <a href="/struktur/{{ $departement->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
         <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Create Program Kerja - Departement :
             {{ $departement->name_departement }} - ({{ $organization->singkatan_organization }})</h2>
 
@@ -38,7 +38,7 @@
             {{-- Input  --}}
             {{-- Input 2 --}}
             <div>
-                <label for="description" class="text-primary font-bold">Deskripsi</label>
+                <label for="description" class="text-primary font-bold">Deskripsi (optional)</label>
                 <div class="mt-2">
                     <input id="description" name="description" type="text" required
                         class="input-form-group @error('description')
@@ -82,6 +82,19 @@
                             error : {{ $message }}
                         </div>
                     @enderror
+                </div>
+            </div>
+            {{-- INput 4 --}}
+            <div class="sm:col-span-3">
+                <label for="status_program" class="block leading-6 text-primary font-bold">Status </label>
+                <div class="mt-2">
+                    <select id="status_program" name="status_program"
+                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
+                        <option value="notyet" selected>Belum Selesai (Default)</option>
+                        <option value="pending">Sedang Dikerjakan</option>
+                        <option value="progress">Tertunda</option>
+                        <option value="completed">Selesai</option>
+                    </select>
                 </div>
             </div>
 

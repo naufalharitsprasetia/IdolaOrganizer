@@ -14,4 +14,8 @@ class Task extends Model
     {
         return $this->belongsTo(Departement::class);
     }
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
 }

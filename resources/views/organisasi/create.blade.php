@@ -5,7 +5,8 @@
 
         <div class="container-mx-auto">
             <a href="/organisasi" class="button-secondary shadow-lg">Back</a>
-            <h2 class="text-2xl font-semibold border-dashed border-2 border-fourth inline-block p-2">Buat Organisasi Baru
+            <h2 class="text-2xl font-semibold border-dashed border-2 border-fourth inline-block p-2 mt-4 md:mt-0">Buat
+                Organisasi Baru
             </h2>
             {{-- Form Start --}}
             <form class="space-y-6" action="" method="POST" enctype="multipart/form-data">

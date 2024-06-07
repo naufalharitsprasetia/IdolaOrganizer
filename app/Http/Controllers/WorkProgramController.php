@@ -7,6 +7,7 @@ use App\Models\Departement;
 use App\Models\Organization;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class WorkProgramController extends Controller
 {
@@ -17,22 +18,21 @@ class WorkProgramController extends Controller
     {
         $orgId = intval($_GET['org']);
         $organization = Organization::find($orgId);
-        // Ambil semua departemen di organisasi
-        $departements = $organization->departements;
-
-        $eventsAll = [];
-        // Loop melalui setiap departemen dan ambil semua event
+        // Asumsi Organization dan Department model sudah di-setup dengan benar
+        $departements = Departement::where('organization_id', $orgId)
+            ->with('prokers')
+            ->get();
         foreach ($departements as $departement) {
-            $eventsAll[] = $departement->events;
-            // Lakukan sesuatu dengan $events (tampilkan, simpan ke array, dll.)
+            foreach ($departement->prokers as $proker) {
+                $endDate = Carbon::parse($proker->end_date);
+                $proker->days_remaining = $endDate->diffInDays(Carbon::now());
+            }
         }
-        // dd($eventsAll);
-
         return view('proker.index', [
             'active' => 'proker',
             // 'departements' => $departements,
             'organization' => $organization,
-            'eventsAll' => $eventsAll
+            'departements' => $departements
         ]);
     }
 
@@ -65,6 +65,7 @@ class WorkProgramController extends Controller
             'start_date' => 'required|date',
             'end_date' => 'required|date',
             'departements_id' => 'required',
+            'status_program' => 'required',
         ]);
 
         WorkProgram::create($validatedData);

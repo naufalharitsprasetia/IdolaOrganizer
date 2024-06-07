@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartementController;
@@ -27,7 +28,7 @@ use App\Models\WorkProgram;
 
 // HOME
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/learning', [HomeController::class, 'learning'])->name('learning');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
@@ -39,6 +40,10 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [AuthController::class, 'addUser'])->name('addUser');
 });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth');
+
+// ADMIN
+Route::get('/dashboard-admin', [AdminController::class, 'index'])->name('admin.index')->middleware(['auth', 'admin']);
 
 // JUST AUTH MIDDLEWARE
 Route::middleware('auth')->group(
@@ -61,6 +66,7 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         Route::get('/posisi/create', [PositionController::class, 'create'])->name('position.create');
         Route::post('/posisi/create', [PositionController::class, 'store'])->name('position.store');
         // Member
+        Route::get('/member', [MemberController::class, 'index'])->name('member.index');
         Route::get('/member/create', [MemberController::class, 'create'])->name('member.create');
         Route::post('/member/create', [MemberController::class, 'store'])->name('member.store');
         Route::get('/member/{member}', [MemberController::class, 'show'])->name('member.show');
@@ -69,7 +75,7 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         Route::get('/proker/create', [WorkProgramController::class, 'create'])->name('proker.create');
         Route::post('/proker/create', [WorkProgramController::class, 'store'])->name('proker.store');
         // Task
-        Route::get('/task', [TaskController::class, 'index'])->name('task.index');
+        // Route::get('/task', [TaskController::class, 'index'])->name('task.index');
         Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
         Route::post('/task/create', [TaskController::class, 'store'])->name('task.store');
         // Event

@@ -11,6 +11,7 @@ use App\Models\Task;
 use App\Models\WorkProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class DepartementController extends Controller
 {
@@ -78,6 +79,16 @@ class DepartementController extends Controller
         $prokers = WorkProgram::where('departements_id', $departement->id)->get();
         $tasks = Task::where('departements_id', $departement->id)->get();
         $events = Event::where('departements_id', $departement->id)->get();
+        foreach ($prokers as $proker) {
+            $proker->days_remaining = Carbon::parse($proker->end_date)->diffInDays(Carbon::now());
+        }
+        foreach ($tasks as $task) {
+            $task->days_remaining = Carbon::parse($task->due_date)->diffInDays(Carbon::now());
+        }
+        foreach ($events as $event) {
+            $event->days_remaining = Carbon::parse($event->event_date)->diffInDays(Carbon::now());
+        }
+
         // dd($organization);
         return view('departement.show', [
             'active' => 'struktur',

@@ -11,13 +11,12 @@
 
 <body class="h-full">
     {{-- Back Button --}}
-    <a href="/" class="block absolute top-5 left-3 button-secondary hover:border-fourth ">Back</a>
+    <a href="/" class="block absolute top-5 left-3 button-secondary hover:border-fourth ">Kembali</a>
     {{-- Back Button --}}
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="mx-auto h-16 w-auto" src="/img/logoy.png" alt="Your Company">
-            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-third">Sign in to your
-                account
+            <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-third">Masuk ke Akun
             </h2>
         </div>
 
@@ -35,8 +34,7 @@
             <form class="space-y-6" action="/login" method="POST">
                 @csrf
                 <div>
-                    <label for="email" class="block text-sm font-medium leading-6 text-third">Email
-                        address</label>
+                    <label for="email" class="block text-sm font-medium leading-6 text-third">Alamat Email</label>
                     <div class="mt-2">
                         <input id="email" name="email" type="email" autocomplete="email" required
                             class="block w-full rounded-md py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 @error('email')
@@ -53,10 +51,10 @@
                 <div>
                     <div class="flex items-center justify-between">
                         <label for="password" class="block text-sm font-medium leading-6 text-third">Password</label>
-                        <div class="text-sm">
+                        {{-- <div class="text-sm">
                             <a href="#" class="font-semibold text-fourth hover:text-fourth">Forgot
                                 password?</a>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="mt-2">
                         <input id="password" name="password" type="password" autocomplete="current-password" required
@@ -73,8 +71,7 @@
 
                 <div>
                     <button type="submit"
-                        class="flex w-full justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fourth">Sign
-                        in</button>
+                        class="flex w-full justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fourth">Masuk</button>
                 </div>
             </form>
 

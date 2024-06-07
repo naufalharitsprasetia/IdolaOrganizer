@@ -12,7 +12,9 @@ class FinancialController extends Controller
      */
     public function index()
     {
-        //
+        // Uang MASUK
+        // Uang KELUAR
+        // Uang SALDO
     }
 
     /**

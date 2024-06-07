@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departement;
 use App\Models\Organization;
+use App\Models\WorkProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrganizationController extends Controller
 {
@@ -71,12 +74,46 @@ class OrganizationController extends Controller
      */
     public function show(Organization $organization)
     {
-        //
+        // Ambil data jumlah anggota per departemen
+        $departements = Departement::where('organization_id', $organization->id)
+            ->withCount('members')
+            ->get();
+        $departementNames = $departements->pluck('name_departement')->toArray();
+        $memberCounts = $departements->pluck('members_count')->toArray();
+
+        // Ambil data jumlah proker per departemen
+        $workPrograms = Departement::where('organization_id', $organization->id)
+            ->withCount('prokers')
+            ->get();
+        $workProgramCounts = $workPrograms->pluck('prokers_count')->toArray();
+
+        // Ambil data progress proker
+        $progresses = WorkProgram::whereIn('departements_id', $departements->pluck('id'))
+            ->select('departements_id', DB::raw('COUNT(*) as total'), DB::raw('SUM(status_program = "completed") as completed'))
+            ->groupBy('departements_id')
+            ->get();
+
+        $progressData = [];
+        foreach ($progresses as $progress) {
+            $departement = $departements->firstWhere('id', $progress->departements_id);
+            $progressData[] = [
+                'departement' => $departement ? $departement->name_departement : 'Unknown',
+                'total' => $progress->total,
+                'completed' => $progress->completed,
+                'percentage' => $progress->total ? ($progress->completed / $progress->total) * 100 : 0,
+            ];
+        }
+
         return view('organisasi.show', [
             'active' => 'dashboard',
-            'organization' => $organization
+            'organization' => $organization,
+            'departementNames' => $departementNames,
+            'memberCounts' => $memberCounts,
+            'workProgramCounts' => $workProgramCounts,
+            'progressData' => $progressData
         ]);
     }
+
 
     /**
      * Show the form for editing the specified resource.

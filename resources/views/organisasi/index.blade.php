@@ -5,7 +5,7 @@
     <section id="organization" class="pt-14 pb-28 bg-primary text-fourth w-full md:px-20">
         <div class="container-mx-auto">
             <div class="flex items-center">
-                <h2 class="text-xl font-semibold px-4 border-r-2 ">Organisasi</h2><span class="mx-2"> Home /
+                <h2 class="text-xl font-semibold px-4 border-r-2 ">Organisasi</h2><span class="mx-2"> Beranda /
                     Organisasi</span>
             </div>
             @if (session()->has('success'))
@@ -15,10 +15,10 @@
             @endif
             {{--  --}}
             <div class="ml-3 my-4 text-sm">
-                <a href="/organisasi-create" class="button-secondary">Tambahkan Organisasi Baru</a>
+                <a href="/organisasi-create" class="button-secondary ">Tambahkan Organisasi Baru</a>
             </div>
             @if ($organizations->isEmpty())
-                <p>You are not part of any organizations.</p>
+                <p class="">You are not part of any organizations.</p>
             @else
                 <div class="flex flex-col md:flex-row md:flex-wrap gap-1">
                     {{-- card 1 --}}

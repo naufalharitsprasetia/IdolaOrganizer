@@ -15,11 +15,11 @@ class HomeController extends Controller
         ]);
     }
 
-    public function home()
+    public function learning()
     {
-        return view('home.home', [
-            'active' => 'home',
-            'title' => 'home'
+        return view('home.learning', [
+            'active' => 'learning',
+            'title' => 'learning'
         ]);
     }
 

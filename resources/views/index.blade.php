@@ -24,10 +24,10 @@
                     <p class="mt-6 text-lg leading-8 text-gray-300">Dari Struktur Hingga Kegiatan, Kelola Semua dengan
                         idolaOrganizer.</p>
                     <div class="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-                        <a href="#"
+                        <a href="/organisasi"
                             class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Mulai
                             Kelola</a>
-                        <a href="#" class="text-sm font-semibold leading-6 text-white hover:text-gray-300">Pelajari
+                        <a href="/about" class="text-sm font-semibold leading-6 text-white hover:text-gray-300">Pelajari
                             Selengkapnya <span aria-hidden="true">→</span></a>
                     </div>
                 </div>
@@ -66,13 +66,13 @@
         <div class="container mx-auto">
             <div class="flex flex-col-reverse md:flex-row">
                 <div class="w-3/4 mb-8 md:mb-0 md:px-10 md:w-1/2 mx-auto">
-                    <h2 class="text-center md:text-left font-bold text-3xl text-slate-800 pb-5">About Us</h2>
-                    <p class="font-semibold text-base text-primary opacity-90">IddolaOrganizer adalah aplikasi manajemen
+                    <h2 class="text-center md:text-left font-bold text-3xl text-slate-800 pb-5">Tentang Kami</h2>
+                    <p class="font-semibold text-base text-slate-500 opacity-90">IdolaOrganizer adalah aplikasi manajemen
                         organisasi yang dirancang
                         untuk memudahkan pengguna dalam mengelola berbagai aspek dari organisasi mereka. Aplikasi ini
                         memungkinkan setiap pengguna untuk membuat dan mengelola beberapa organisasi, serta memberikan akses
                         kepada anggota lain untuk membantu dalam pengelolaan. Dengan idolaOrganizer, struktur organisasi,
-                        kegiatan, program kerja, kalender kegiatan, daftar anggota, dan sistem pendukung keputusan dapat
+                        kegiatan, program kerja, tugas, daftar anggota, dan fitur lainnya yang dapat
                         diatur dengan mudah dan efisien.</p>
                 </div>
                 <div class="my-5 md:my-0 md:px-10 w-1/2 mx-auto flex justify-center items-center">
@@ -98,7 +98,7 @@
             <figure class="mt-10">
                 <blockquote class="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
                     <p>“idolaOrganizer benar-benar mengubah cara kami mengelola organisasi. Dengan fitur manajemen
-                        multi-organisasi dan kalender kegiatan yang terintegrasi, semua kegiatan kami berjalan lebih lancar
+                        multi-organisasi dan pengelolaan yang mudah dimengerti, semua kegiatan kami berjalan lebih lancar
                         dan terorganisir.”</p>
                 </blockquote>
                 <figcaption class="mt-10">
@@ -106,7 +106,7 @@
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="">
                     <div class="mt-4 flex items-center justify-center space-x-3 text-base">
-                        <div class="font-semibold text-gray-900">Sarah</div>
+                        <div class="font-semibold text-gray-900">Alvin Arya</div>
                         <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
                             <circle cx="1" cy="1" r="1" />
                         </svg>
@@ -147,25 +147,17 @@
     {{-- Section Start --}}
     <div class="bg-fourth py-20 sm:py-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Trusted by the world’s most innovative
-                teams</h2>
+            <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Project ini didukung oleh :</h2>
             <div
-                class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                    src="https://tailwindui.com/img/logos/158x48/transistor-logo-gray-900.svg" alt="Transistor"
+                class="mx-auto mt-10 grid max-w-lg grid-cols-4 justify-center content-center items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-4 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/dawet.png" alt="Transistor"
+                    width="200" height="100">
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/hmp.png" alt="Reform"
                     width="158" height="48">
-                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                    src="https://tailwindui.com/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform" width="158"
-                    height="48">
-                <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                    src="https://tailwindui.com/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple" width="158"
-                    height="48">
-                <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-                    src="https://tailwindui.com/img/logos/158x48/savvycal-logo-gray-900.svg" alt="SavvyCal" width="158"
-                    height="48">
-                <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-                    src="https://tailwindui.com/img/logos/158x48/statamic-logo-gray-900.svg" alt="Statamic" width="158"
-                    height="48">
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/ti.png" alt="Tuple"
+                    width="158" height="48">
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/unida.png" alt="SavvyCal"
+                    width="158" height="48">
             </div>
         </div>
     </div>

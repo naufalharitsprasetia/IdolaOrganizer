@@ -16,6 +16,16 @@
     {{-- own Style CSS --}}
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+    </script>
     <title>Idola Organizer</title>
 </head>
 
@@ -29,10 +39,12 @@
     {{-- Nav --}}
     @include('neolayout.sidebar')
     {{-- CONTENT --}}
-    <div class="ml-[22vw] pt-12">
+    <div class="hidden ml-[30vw]"></div>
+    <div class="md:ml-[22vw] pt-12" id="mainblade">
         <div class=" mb-12 bg-fourth text-primary border-4 border-dashed border-secondary mx-6 rounded-lg p-5">
             @yield('content')
         </div>
+        @yield('secondContent')
     </div>
     {{-- CONTENT --}}
 

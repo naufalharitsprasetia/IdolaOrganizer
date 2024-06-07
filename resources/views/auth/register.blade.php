@@ -11,7 +11,7 @@
 
 <body class="h-full">
     {{-- Back Button --}}
-    <a href="/" class="absolute top-5 left-5 button-secondary">Back</a>
+    <a href="/" class="absolute top-5 left-3 button-secondary">Kembali</a>
     {{-- Back Button --}}
     <div class="flex min-h-full flex-col justify-center px-6 py-8 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">

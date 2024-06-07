@@ -15,6 +15,16 @@
     <script src="https://kit.fontawesome.com/0e361b3f2b.js" crossorigin="anonymous"></script>
     {{-- Own CSS --}}
     <link rel="stylesheet" href="/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Idola Organizer</title>
 </head>

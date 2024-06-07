@@ -15,4 +15,8 @@ class Event extends Model
     {
         return $this->belongsTo(Departement::class, 'departements_id');
     }
+    public function member()
+    {
+        return $this->belongsTo(Member::class);
+    }
 }

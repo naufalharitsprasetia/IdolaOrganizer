@@ -1,20 +1,20 @@
-Tutorial Instalasi Project SIBETA (Laravel) :
+Assalamualaikum Wr.Wb.
+
+Disini kami akan membantu untuk cara instalasi project IdolaOrganizer ini berikut langkah-langkahnya : 
 
 1. Download & Install Laragon atau Xampp terlebih dahulu (apache,mysql).
 
-2. Extract sibeta.zip dan taruh di folder www (laragon) / htdocs (xampp).
+2. Extract dawet_idolaOrganizer.zip kemudia cut/copy folder "idolaOrganizer" dalam folder "/www" untuk yg pakai laragon  "/htdocs" untuk yang pakai xampp.
 
-3. download dan install NPM dan Composer terlebih dahulu. jika ragu, silahkan cek terlebih dahulu, ketik "composer -v" dan "npm -v" di terminal, fyi: saya memakai (Composer version 2.5.8) dan (git version 2.37.3.windows.1)
+3. Jika belum punya NPM dan Composer silahkan install terlebih dahulu. jika ragu, silahkan cek terlebih dahulu, ketik "composer -v" dan "npm -v" di terminal.
 
-4. buka terminal , masuk ke direktori xampp/htdocs/sibeta atau laragon/www/sibeta.
+4. Buka terminal, masuk ke direktori "xampp/htdocs/idolaOrganizer" (xampp) atau "laragon/www/idolaOrganizeer" (laragon).
 
-5. ketik/jalankan "composer --self update" (untuk menginstall package/module di aplikasi ini)
+5. ketik/jalankan "composer --self update" (untuk menginstall package/module di aplikasi ini).
 
-6. Rename .env.example menjadi .env (untuk konfigurasi aplikasinya) //
+6. ketik/jalankan "npm install" (untuk menginstall package/module di aplikasi ini).
 
-7. ketik/jalankan "php artisan key:generate" (untuk membuat APP_KEY nya) // 
-
-8. buka phpmyadmin atau mysql , selanjutnya buatlah Database (terserah namanya) didalam mysql (phpmyadmin) *
+7. buka phpmyadmin (mysql), selanjutnya buatlah Database baru dengan nama database "idolaorganizer".
 
 9. buka file .env yang tadi dalam code editor anda, sesuaikan konfigurasi Databasenya di .env :
 
@@ -31,10 +31,29 @@ DB_PASSWORD= (defaultnya kosong, jika di device anda berbeda maka ganti saja)
 13. Selesai !! anda telah berhasil.
 
 
-NB : 
-1. Jika ada kendala dalam menjalankan aplikasinya , silahkan hubungi No saya : 0812-2059-4202 (WhatsApp) A.N (Naufal Harits P)
 
-2. Ada Akun Admin yang memiliki akses untuk mengelola materi, bab, latihan, soal, dan jawaban Ilmu Tajwid.:
-(akun admin)
-email = admin@gmail.com
-password = admin123
+Note = Versi yang digunakan dalam  aplikasi ini :
+- Laravel = Versi
+- NPM (Node Package Manager) = Versi 
+- Composer
+- Laragon (Untuk Web Server) = Laragon V.
+- Tailwind =  
+- PHP =
+
+NB :
+
+- Jika ada kendala dalam menjalankan / meng-install aplikasinya , silahkan hubungi Nomer saya : 0812-2059-4202 (WhatsApp) A.N (Naufal Harits P)
+
+- Ada 3 Akun yang sudah terdaftar di seeder :
+	1. email = superadmin@gmail.com | password = bismillah
+	2. email = naufal@gmail.com | password = bismillah (2 Organisasi)
+	3. email = fulan@gmail.com | password = 123456789
+
+keterangan tambahan -> 
+1. untuk yg email supeadmin itu memiliki akses admin (is_admin=true) , akun ini bisa melihat jumlah semua users yang terdaftar di aplikasi ini dan jumlah organisasi yang terdaftar di aplikasi ini (route = "/dashboard-admin").
+2. akun biasa, sudah ada 2 Organisasi didalam nya, dan di dalam 2 organisasi tersebut sudah ada berbagai macam departement/bagian, posisi, anggota, program kerja, tugas, dan kegiatan.
+3. akun biasa, belum terdapat apa-apa
+
+
+- 
+

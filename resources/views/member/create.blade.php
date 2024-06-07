@@ -3,7 +3,7 @@
 @section('content')
     {{-- organization section --}}
     <div class="struktur-organization relative">
-        <a href="/struktur/{{ $departement->id }}" class="button-primary absolute right-2 top-2">Back</a>
+        <a href="/struktur/{{ $departement->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
         <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Create Member - Departement :
             {{ $departement->name_departement }} - ({{ $organization->singkatan_organization }})</h2>
 

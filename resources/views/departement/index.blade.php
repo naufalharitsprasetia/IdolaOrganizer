@@ -9,11 +9,17 @@
                 {{ session('success') }}
             </div>
         @endif
-        <a href="/struktur/create?org={{ $organization->id }}" class="button-secondary my-3">Tambahkan Departement (Bagian)
-            Baru</a>
-        <div class="flex gap-2 justify-center content-center flex-wrap">
+        <div class="button-secondary font-medium text-wrap my-3 text-center">
+            <a href="/struktur/create?org={{ $organization->id }}" class=""><span>
+                    Tambahkan
+                    Departement (Bagian)
+                    Baru
+                </span>
+            </a>
+        </div>
+        <div class="flex flex-col md:flex-row gap-2 justify-center content-center flex-wrap">
             @foreach ($departements as $departement)
-                <div class="departement-card bg-primary text-fourth p-4 rounded-lg w-2/5 mt-5 border-4 border-secondary">
+                <div class="departement-card bg-primary text-fourth p-4 rounded-lg md:w-2/5 mt-5 border-4 border-secondary">
                     <h1 class="font-bold text-2xl text-center my-3">{{ $departement->name_departement }}</h1>
                     <p class="font-medium text-sm text-center my-2">"{{ $departement->description }}"</p>
                     <h4 class="font-medium text-base mt-2 mb-5 text-center">Jumlah Anggota :

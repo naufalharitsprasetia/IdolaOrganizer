@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class UserSeeder extends Seeder
 {
@@ -17,21 +18,24 @@ class UserSeeder extends Seeder
         //
         // Data sampel
         $users = [
-            [
-                'name' => 'Super Admin',
-                'email' => 'superadmin@gmail.com',
-                'password' => Hash::make('bismillah'),
-                'role' => 'admin',
-            ],
-            [
-                'name' => 'Fulan Ahmad',
-                'email' => 'fulan@gmail.com',
-                'password' => Hash::make('123456789'),
-            ],
+
+
             [
                 'name' => 'Naufal Harits Prasetia',
                 'email' => 'naufal@gmail.com',
                 'password' => Hash::make('bismillah'),
+                'created_at' => Carbon::now(),
+            ], [
+                'name' => 'Fulan Ahmad',
+                'email' => 'fulan@gmail.com',
+                'password' => Hash::make('123456789'),
+                'created_at' => Carbon::now(),
+            ],   [
+                'name' => 'Super Admin',
+                'email' => 'superadmin@gmail.com',
+                'password' => Hash::make('bismillah'),
+                'is_admin' => true,
+                'created_at' => Carbon::now(),
             ],
         ];
 

@@ -16,7 +16,9 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "@tailwindcss/aspect-ratio": "^0.4.2",
         "@tailwindcss/forms": "^0.5.7",
+        "chart.js": "^4.4.3",
         "sweetalert2": "^11.11.0",
         "vanilla-tilt": "^1.8.1"
     }
