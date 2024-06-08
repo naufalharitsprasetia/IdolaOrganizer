@@ -44,8 +44,10 @@
             {{-- Input 2 --}}
             {{-- Input 3 --}}
             <div class="sm:col-span-3">
-                <label for="parent_id" class="block leading-6 text-primary font-bold">Parent ID <a href=""
-                        class=" mx-2 text-sm font-medium text-blue-500">(Penjelasan)</a></label>
+                <label for="parent_id" class="block leading-6 text-primary font-bold">Parent ID <button type="button"
+                        onclick="openModal('exampleModal')"
+                        class=" mx-2 text-sm font-medium    
+                        text-blue-500">(Penjelasan)</button></label>
                 <div class="mt-2">
                     <select id="parent_id" name="parent_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
@@ -65,4 +67,22 @@
         </form>
         {{-- Form End --}}
     </div>
+    <x-modal id="exampleModal">
+        <x-slot name="title">
+            PARENT ID
+        </x-slot>
+        Parent ID adalah konsep yang digunakan dalam desain database untuk merepresentasikan relasi hierarki atau berjenjang
+        antara entitas dalam tabel yang sama. Ini biasanya diterapkan dalam struktur data seperti pohon (tree) atau daftar
+        berjenjang (nested list)
+        <br><br>
+        Contoh Struktur Hierarki
+        <br>
+        <div class="">
+            <span>(id=1) | bag. Pengembangan | (parent_id = null)</span>
+            <ul>
+                <li> | sub. bag. IT | (parent_id = 1)</li>
+                <li> | sub. bag. Riset dan Inovasi | (parent_id = 1)</li>
+            </ul>
+        </div>
+    </x-modal>
 @endsection

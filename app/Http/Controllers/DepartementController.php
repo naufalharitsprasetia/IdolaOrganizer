@@ -86,7 +86,7 @@ class DepartementController extends Controller
             $task->days_remaining = Carbon::parse($task->due_date)->diffInDays(Carbon::now());
         }
         foreach ($events as $event) {
-            $event->days_remaining = Carbon::parse($event->event_date)->diffInDays(Carbon::now());
+            $event->days_remaining = Carbon::parse($event->event_date_end)->diffInDays(Carbon::now());
         }
 
         // dd($organization);

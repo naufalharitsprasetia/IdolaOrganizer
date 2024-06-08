@@ -14,9 +14,11 @@
     {{-- Font AWESOME --}}
     <script src="https://kit.fontawesome.com/0e361b3f2b.js" crossorigin="anonymous"></script>
     {{-- own Style CSS --}}
+    @stack('styles') <!-- Stack untuk styles jika dibutuhkan -->
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.14/index.global.min.js'></script>
     <script>
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
@@ -49,6 +51,7 @@
     {{-- CONTENT --}}
 
     {{-- Script / JS --}}
+    @stack('scripts') <!-- Stack untuk scripts di akhir body -->
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
     <script type="text/javascript" src="/js/vanilla-tilt.js"></script>
     <script src="/js/script.js"></script>

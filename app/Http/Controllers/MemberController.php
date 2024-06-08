@@ -8,6 +8,7 @@ use App\Models\Departement;
 use App\Models\Position;
 use App\Models\User;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class MemberController extends Controller
 {
@@ -72,6 +73,25 @@ class MemberController extends Controller
             'organization' => $organization,
             'departement' => $departement,
         ]);
+    }
+    public function syncMember(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'member_id' => 'required|exists:members,id',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User dengan email tersebut tidak ditemukan.');
+        }
+
+        $member = Member::find($request->member_id);
+        $member->user_id = $user->id;
+        $member->save();
+        Alert::alert('Berhasil', 'selamat ! member telah sinkron dengan user !', 'Success');
+        return redirect()->back()->with('success', 'Member berhasil disinkronisasi dengan User.');
     }
 
     public function edit(Member $member)

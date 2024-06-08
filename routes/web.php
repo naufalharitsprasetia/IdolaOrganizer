@@ -80,6 +80,7 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         Route::post('/task/create', [TaskController::class, 'store'])->name('task.store');
         // Event
         Route::get('/event', [EventController::class, 'index'])->name('event.index');
+        Route::get('/event/list', [EventController::class, 'getEvents'])->name('event.list');
         Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
         Route::post('/event/create', [EventController::class, 'store'])->name('event.store');
         // Keuangan (ROLE = bendahara)

@@ -1,6 +1,9 @@
 @extends('neolayout.main')
 
 @section('content')
+    @php
+        use Carbon\Carbon;
+    @endphp
     {{-- organization section --}}
     <div class="struktur-organization relative">
         <a href="/struktur?org={{ $organization->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
@@ -47,6 +50,14 @@
                             <p class="text-sm leading-6 text-gray-900">{{ $member->position->name_position }}</p>
                             <a href="/member/{{ $member->id }}?org={{ $organization->id }}"
                                 class="mt-1 text-xs font-semibold leading-5 text-fourth rounded-lg px-3 py-2 bg-secondary hover:text-secondary hover:bg-fourth border-2 hover:border-secondary">Detail</a>
+                            @if ($member->user_id != null)
+                                <p
+                                    class="mt-1 text-xs font-semibold leading-5 text-slate-400 rounded-lg px-3 py-2 bg-green-500">
+                                    Telah Sinkron ✅</p>
+                            @else
+                                <button type="button" onclick=""
+                                    class="mt-1 text-xs font-semibold leading-5 text-slate-200 rounded-lg px-3 py-2 bg-blue-700 hover:text-slate-100 hover:bg-blue-500 border-2 hover:border-blue-700">Sync</button>
+                            @endif
                         </div>
                     </li>
                 </ul>
@@ -84,7 +95,8 @@
                                         <p class="text-gray-900 whitespace-no-wrap">{{ $proker->name_program }}</p>
                                     </td>
                                     <td class="tableTd">
-                                        <p class="text-gray-900 whitespace-no-wrap">{{ $proker->end_date }}<br><span
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ Carbon::parse($proker->end_date)->format('d-m-Y') }}<br><span
                                                 class="text-xs">({{ $proker->days_remaining }} Hari Lagi)</span></p>
                                     </td>
                                     </td>
@@ -152,7 +164,8 @@
                                         <p class="text-gray-900 whitespace-no-wrap">{{ $task->name_task }}</p>
                                     </td>
                                     <td class="tableTd">
-                                        <p class="text-gray-900 whitespace-no-wrap">{{ $task->due_date }}<br><span
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            {{ Carbon::parse($task->due_date)->format('d-m-Y') }}<br><span
                                                 class="text-xs">({{ $task->days_remaining }} Hari Lagi)</span></p>
                                     </td>
                                     <td class="tableTd">
@@ -225,7 +238,7 @@
                                     </td>
                                     <td class="tableTd">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            {{ $event->event_date }} <br><span
+                                            {{ Carbon::parse($event->event_date_end)->format('d-m-Y') }} <br><span
                                                 class="text-xs">({{ $event->days_remaining }} Hari Lagi)</span>
                                         </p>
                                     </td>

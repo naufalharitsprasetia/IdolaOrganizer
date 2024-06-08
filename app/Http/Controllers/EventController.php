@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Organization;
 use App\Models\Departement;
 use App\Models\Member;
+use App\Models\WorkProgram;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -34,7 +35,11 @@ class EventController extends Controller
             'eventsAll' => $eventsAll
         ]);
     }
-
+    public function getEvents()
+    {
+        $events = Event::all(['id', 'name_event as title', 'event_date_start as start', 'event_date_end as end', 'description as description', 'location as location']);
+        return response()->json($events);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -61,7 +66,8 @@ class EventController extends Controller
         $validatedData = $request->validate([
             'name_event' => 'required|string|max:255',
             'description' => 'nullable|string',
-            'event_date' => 'required|date',
+            'event_date_start' => 'required|date',
+            'event_date_end' => 'required|date',
             'location' => 'nullable|string',
             'departements_id' => 'required',
             'member_id' => 'nullable',

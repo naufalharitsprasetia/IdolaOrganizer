@@ -18,10 +18,10 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->string('status_program'); // e.g., 'pending', 'completed', etc.
-            $table->unsignedBigInteger('departements_id')->nullable();
+            $table->unsignedBigInteger('departements_id');
             $table->timestamps();
 
-            $table->foreign('departements_id')->references('id')->on('departements')->onDelete('set null');
+            $table->foreign('departements_id')->references('id')->on('departements')->onDelete('cascade');
         });
     }
 

@@ -54,14 +54,30 @@
             </div>
             {{-- Input 3 --}}
             <div>
-                <label for="event_date" class="text-primary font-bold">Tanggal Kegiatan</label>
+                <label for="event_date_start" class="text-primary font-bold">Tanggal Kegiatan Dimulai</label>
                 <div class="mt-2">
-                    <input id="event_date" name="event_date" type="date" required
-                        class="input-form-group @error('event_date')
+                    <input id="event_date_start" name="event_date_start" type="date" required
+                        class="input-form-group @error('event_date_start')
                                 input-wrong
                             @enderror "
-                        value="{{ old('event_date') }}">
-                    @error('event_date')
+                        value="{{ old('event_date_start') }}">
+                    @error('event_date_start')
+                        <div class="label-error">
+                            error : {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+            </div>
+            {{-- Input 3,5 --}}
+            <div>
+                <label for="event_date_end" class="text-primary font-bold">Tanggal Kegiatan Berakhir</label>
+                <div class="mt-2">
+                    <input id="event_date_end" name="event_date_end" type="date" required
+                        class="input-form-group @error('event_date_end')
+                                input-wrong
+                            @enderror "
+                        value="{{ old('event_date_end') }}">
+                    @error('event_date_end')
                         <div class="label-error">
                             error : {{ $message }}
                         </div>

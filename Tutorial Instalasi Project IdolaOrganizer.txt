@@ -24,11 +24,13 @@ DB_PASSWORD= (defaultnya kosong, jika di device anda berbeda maka ganti saja)
 
 10. ketik/jalankan "php artisan migrate:fresh --seed" untuk menjalankan migrasi dan seeder nya.
 
-11. jalankan aplikasi di terminal ketik "php artisan serve"
+11. jalankan "php artisan storage:link" untuk membuat symbolic link.
 
-12. ctrl+klik di terminal atau buka di browser "http://127.0.0.1:8000" 
+12. jalankan aplikasi di terminal ketik "php artisan serve"
 
-13. Selesai !! anda telah berhasil.
+13. lalu akan muncul alamat website kita , biasanya "" , lalu ctrl+klik pada alamat di terminal tersebut atau buka di browser lalu ketik url "http://127.0.0.1:8000" 
+
+14. Selesai !! anda telah berhasil.
 
 
 

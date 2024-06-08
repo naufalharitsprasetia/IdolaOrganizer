@@ -82,8 +82,20 @@
     </div>
     <x-modal id="exampleModal">
         <x-slot name="title">
-            Modal Title
+            PARENT ID
         </x-slot>
-        This is the content of the modal.
+        Parent ID adalah konsep yang digunakan dalam desain database untuk merepresentasikan relasi hierarki atau berjenjang
+        antara entitas dalam tabel yang sama. Ini biasanya diterapkan dalam struktur data seperti pohon (tree) atau daftar
+        berjenjang (nested list)
+        <br><br>
+        Contoh Struktur Hierarki
+        <br>
+        <div class="">
+            <span>(id=1) | bag. Pengembangan | (parent_id = null)</span>
+            <ul>
+                <li> | sub. bag. IT | (parent_id = 1)</li>
+                <li> | sub. bag. Riset dan Inovasi | (parent_id = 1)</li>
+            </ul>
+        </div>
     </x-modal>
 @endsection
