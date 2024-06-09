@@ -9,8 +9,17 @@
         <a href="/struktur?org={{ $organization->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
         <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3 text-center">Departement (Bagian) :
             {{ $departement->name_departement }}</h2>
-        <p class="text-base font-medium mt-1 mb-6 mx-3">Deskripsi : "{{ $departement->description }}"</p>
-        <hr>
+        <p class="text-base font-medium mt-1 mb-2 mx-3">Deskripsi : "{{ $departement->description }}"</p>
+        <a href="/struktur-edit/{{ $departement->id }}?org={{ $organization->id }}"
+            class="text-white bg-yellow-500 px-2 py-1 rounded-lg hover:opacity-80 inline mb-4">Edit Departement</a>
+        <form action="/struktur-delete/{{ $departement->id }}?org={{ $organization->id }}"
+            id="formDelete-{{ $departement->id }}" method="POST" class="inline">
+            @method('delete')
+            @csrf
+            <button type="button" onclick="deleteConfirm({{ $departement->id }})"
+                class="text-white bg-red-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus Departement</button>
+        </form>
+        <hr class="w-full my-2 border-1 border-primary">
         @if (session()->has('success'))
             <div class="alert alert-success col-lg-12 mt-4 mb-4" role="alert">
                 {{ session('success') }}
@@ -83,7 +92,7 @@
         <div class="proker mb-7">
             <p class="text-xl font-semibold mt-1 mb-2 mx-3">Program Kerja : </p>
             <div class="button-primary inline-block">
-                <a href="/proker/create?dept={{ $departement->id }}" class="">Tambah program kerja</a>
+                <a href="/proker-create?dept={{ $departement->id }}" class="">Tambah program kerja</a>
             </div>
             <ul class="mt-3 ml-3">
 
@@ -118,17 +127,18 @@
                                     </td>
                                     <td class=" bg-white">
                                         <div class="flex flex-wrap gap-1 bg-white">
-                                            <a href=""
+                                            <a href="/proker/{{ $proker->id }}?org={{ $organization->id }}"
                                                 class="text-white bg-blue-600 px-2 py-1 rounded-lg hover:opacity-80">Detail</a>
 
-                                            <a href=""
+                                            <a href="/proker-edit/{{ $proker->id }}?dept={{ $departement->id }}"
                                                 class="text-white bg-yellow-500 px-2 py-1 rounded-lg hover:opacity-80">Edit</a>
-                                            <form action="" method="post" class="d-inline">
+                                            <form
+                                                action="/proker-delete/{{ $proker->id }}?dept={{ $proker->departements_id }}"
+                                                id="formDelete-{{ $proker->id }}" method="POST" class="inline">
                                                 @method('delete')
                                                 @csrf
-                                                <button
-                                                    class=" text-white bg-rose-600 px-2 py-1 rounded-lg hover:opacity-80"
-                                                    onclick="return confirm('Are you Sure?')">Delete</button>
+                                                <button type="button" onclick="deleteConfirm({{ $proker->id }})"
+                                                    class="text-white bg-red-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus</button>
                                             </form>
                                         </div>
                                     </td>

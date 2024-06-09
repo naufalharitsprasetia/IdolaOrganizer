@@ -32,13 +32,16 @@
                                     Work Program</th>
                                 <th
                                     class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
-                                    Description</th>
+                                    Date</th>
+                                {{-- <th
+                                    class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
+                                    End Date</th> --}}
                                 <th
                                     class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
-                                    Start Date</th>
+                                    Status</th>
                                 <th
                                     class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
-                                    End Date</th>
+                                    Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,11 +55,11 @@
                                             {{ $workProgram->name_program }}
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            {{ $workProgram->start_date }}
+                                            {{ $workProgram->start_date }} sampai {{ $workProgram->end_date }}
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        {{-- <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             {{ $workProgram->end_date }}<br><span
-                                                class="text-xs">({{ $workProgram->days_remaining }} Hari Lagi)</span>
+                                                class="text-xs">({{ $workProgram->days_remaining }} Hari Lagi)</span> --}}
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <span
@@ -65,6 +68,20 @@
                                                     class="absolute inset-0  {{ $workProgram->status_program == 'completed' ? 'bg-green-200' : '' }} {{ $workProgram->status_program == 'notyet' ? 'bg-red-400' : '' }} {{ $workProgram->status_program == 'progress' ? 'bg-yellow-300' : '' }} {{ $workProgram->status_program == 'pending' ? 'bg-yellow-500' : '' }} opacity-50 rounded-full"></span>
                                                 <span class="relative">{{ $workProgram->status_program }}</span>
                                             </span>
+                                        </td>
+                                        <td class=" bg-white">
+                                            <div class="flex flex-wrap gap-1 bg-white">
+                                                <a href="/proker/{{ $workProgram->id }}?org={{ $organization->id }}"
+                                                    class="text-white bg-blue-600 px-2 py-1 rounded-lg hover:opacity-80">Detail</a>
+                                                <form
+                                                    action="/proker-delete/{{ $workProgram->id }}?dept={{ $workProgram->departements_id }}"
+                                                    id="formDelete-{{ $workProgram->id }}" method="POST" class="inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="button" onclick="deleteConfirm({{ $workProgram->id }})"
+                                                        class="text-white bg-red-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus</button>
+                                                </form>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

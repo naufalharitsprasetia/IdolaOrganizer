@@ -1740,6 +1740,11 @@ select {
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
 }
 
+.bg-rose-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(251 113 133 / var(--tw-bg-opacity));
+}
+
 .bg-rose-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(244 63 94 / var(--tw-bg-opacity));
@@ -1784,6 +1789,11 @@ select {
   background-color: rgb(253 224 71 / var(--tw-bg-opacity));
 }
 
+.bg-yellow-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
+}
+
 .bg-yellow-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 179 8 / var(--tw-bg-opacity));
@@ -1797,16 +1807,6 @@ select {
 .bg-yellow-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(133 77 14 / var(--tw-bg-opacity));
-}
-
-.bg-yellow-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-
-.bg-rose-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(251 113 133 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-50 {

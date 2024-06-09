@@ -67,6 +67,9 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         Route::get('/struktur/create', [DepartementController::class, 'create'])->name('departement.create');
         Route::post('/struktur/create', [DepartementController::class, 'store'])->name('departement.store');
         Route::get('/struktur/{departement}', [DepartementController::class, 'show'])->name('departement.show');
+        Route::get('/struktur-edit/{departement}', [DepartementController::class, 'edit'])->name('departement.edit');
+        Route::put('/struktur-edit/{departement}', [DepartementController::class, 'update'])->name('departement.update');
+        Route::delete('/struktur-delete/{departement}', [DepartementController::class, 'destroy'])->name('departement.destroy');
         // Positions
         Route::get('/posisi/create', [PositionController::class, 'create'])->name('position.create');
         Route::post('/posisi/create', [PositionController::class, 'store'])->name('position.store');
@@ -84,8 +87,12 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         Route::get('/member/{member}', [MemberController::class, 'show'])->name('member.show');
         // Program Kerja
         Route::get('/proker', [WorkProgramController::class, 'index'])->name('proker.index');
-        Route::get('/proker/create', [WorkProgramController::class, 'create'])->name('proker.create');
-        Route::post('/proker/create', [WorkProgramController::class, 'store'])->name('proker.store');
+        Route::get('/proker/{workProgram}', [WorkProgramController::class, 'show'])->name('proker.show');
+        Route::get('/proker-create', [WorkProgramController::class, 'create'])->name('proker.create');
+        Route::post('/proker-create', [WorkProgramController::class, 'store'])->name('proker.store');
+        Route::get('/proker-edit/{workProgram}', [WorkProgramController::class, 'edit'])->name('proker.edit');
+        Route::put('/proker-edit/{workProgram}', [WorkProgramController::class, 'update'])->name('proker.update');
+        Route::delete('/proker-delete/{workProgram}', [WorkProgramController::class, 'destroy'])->name('proker.destroy');
         // Task
         // Route::get('/task', [TaskController::class, 'index'])->name('task.index');
         Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');

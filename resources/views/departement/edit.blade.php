@@ -3,11 +3,12 @@
 @section('content')
     {{-- organization section --}}
     <div class="struktur-organization relative">
-        <a href="/struktur?org={{ $organization->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
-        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Struktur Organisasi - Departement</h2>
+        <a href="/struktur?org={{ $organization->id }}" class="button-primary md:absolute md:right-2 md:top-2">Kembali</a>
+        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Ubah Data Departement</h2>
         {{-- Form Start --}}
-        <form class="space-y-6" action="/struktur/create" method="POST">
+        <form class="space-y-6" action="/struktur-edit/{{ $departement->id }}?org={{ $organization->id }}" method="POST">
             @csrf
+            @method('put')
             <input type="hidden" name="organization_id" value="{{ $organization->id }}">
             {{-- Input 1 --}}
             <div>
@@ -17,7 +18,7 @@
                         class="input-form-group @error('name_departement')
                                 input-wrong
                             @enderror "
-                        value="{{ old('name_departement') }}">
+                        value="{{ old('name_departement', $departement->name_departement) }}">
                     @error('name_departement')
                         <div class="label-error">
                             error : {{ $message }}
@@ -33,7 +34,7 @@
                         class="input-form-group @error('description')
                                 input-wrong
                             @enderror "
-                        value="{{ old('description') }}">
+                        value="{{ old('description', $departement->description) }}">
                     @error('description')
                         <div class="label-error">
                             error : {{ $message }}
@@ -52,8 +53,12 @@
                     <select id="parent_id" name="parent_id"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
                         <option value="">NONE</option>
-                        @foreach ($departements as $departement)
-                            <option value="{{ $departement->id }}">{{ $departement->name_departement }}</option>
+                        @foreach ($departements as $bagian)
+                            @if (old('parent_id', $departement->parent_id) == $bagian->id)
+                                <option value="{{ $bagian->id }}" selected>{{ $bagian->name_departement }}</option>
+                            @else
+                                <option value="{{ $bagian->id }}">{{ $bagian->name_departement }}</option>
+                            @endif
                         @endforeach
                     </select>
                 </div>
@@ -61,7 +66,7 @@
 
 
             <div>
-                <button type="submit" class="button-primary">Tambahkan Departement</button>
+                <button type="submit" class="button-primary">Perbarui Departement</button>
             </div>
 
         </form>

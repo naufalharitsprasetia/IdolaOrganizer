@@ -3,14 +3,16 @@
 @section('content')
     {{-- organization section --}}
     <div class="struktur-organization relative">
-        <a href="/struktur/{{ $departement->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
-        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Create Program Kerja - Departement :
+        <a href="/struktur/{{ $departement->id }}" class="button-primary md:absolute md:right-2 md:top-2">Kembali</a>
+        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Edit Program Kerja - Departement :
             {{ $departement->name_departement }} - ({{ $organization->singkatan_organization }})</h2>
 
         {{-- Form Start --}}
-        <form class="space-y-6" action="/proker-create" method="POST">
+        <form class="space-y-6" action="/proker-edit/{{ $proker->id }}" method="POST">
             @csrf
+            @method('put')
             <input type="hidden" name="departements_id" value="{{ $departement->id }}">
+            <input type="hidden" name="organization_id" value="{{ $organization->id }}">
             {{-- Input 1 --}}
             <div>
                 <label for="name_departement" class="text-primary font-bold">Departement*</label>
@@ -27,7 +29,7 @@
                         class="input-form-group @error('name_program')
                                 input-wrong
                             @enderror "
-                        value="{{ old('name_program') }}">
+                        value="{{ old('name_program', $proker->name_program) }}">
                     @error('name_program')
                         <div class="label-error">
                             error : {{ $message }}
@@ -44,7 +46,7 @@
                         class="input-form-group @error('description')
                                 input-wrong
                             @enderror "
-                        value="{{ old('description') }}">
+                        value="{{ old('description', $proker->description) }}">
                     @error('description')
                         <div class="label-error">
                             error : {{ $message }}s
@@ -60,7 +62,7 @@
                         class="input-form-group @error('start_date')
                                 input-wrong
                             @enderror "
-                        value="{{ old('start_date') }}">
+                        value="{{ old('start_date', $proker->start_date) }}">
                     @error('start_date')
                         <div class="label-error">
                             error : {{ $message }}
@@ -76,7 +78,7 @@
                         class="input-form-group @error('end_date')
                                 input-wrong
                             @enderror "
-                        value="{{ old('end_date') }}">
+                        value="{{ old('end_date', $proker->end_date) }}">
                     @error('end_date')
                         <div class="label-error">
                             error : {{ $message }}
@@ -90,16 +92,38 @@
                 <div class="mt-2">
                     <select id="status_program" name="status_program"
                         class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                        <option value="notyet" selected>Belum Selesai (Default)</option>
-                        <option value="pending">Sedang Dikerjakan</option>
-                        <option value="progress">Tertunda</option>
-                        <option value="completed">Selesai</option>
+                        @if (old('status_program', $proker->status_program) == 'notyet')
+                            <option value="notyet" selected>Belum Selesai (Default)</option>
+                            <option value="pending">Sedang Dikerjakan</option>
+                            <option value="progress">Tertunda</option>
+                            <option value="completed">Selesai</option>
+                        @elseif(old('status_program', $proker->status_program) == 'pending')
+                            <option value="notyet">Belum Selesai (Default)</option>
+                            <option value="pending" selected>Sedang Dikerjakan</option>
+                            <option value="progress">Tertunda</option>
+                            <option value="completed">Selesai</option>
+                        @elseif(old('status_program', $proker->status_program) == 'progress')
+                            <option value="notyet">Belum Selesai (Default)</option>
+                            <option value="pending">Sedang Dikerjakan</option>
+                            <option value="progress" selected>Tertunda</option>
+                            <option value="completed">Selesai</option>
+                        @elseif(old('status_program', $proker->status_program) == 'completed')
+                            <option value="notyet">Belum Selesai (Default)</option>
+                            <option value="pending">Sedang Dikerjakan</option>
+                            <option value="progress">Tertunda</option>
+                            <option value="completed" selected>Selesai</option>
+                        @else
+                            <option value="notyet">Belum Selesai (Default)</option>
+                            <option value="pending">Sedang Dikerjakan</option>
+                            <option value="progress">Tertunda</option>
+                            <option value="completed">Selesai</option>
+                        @endif
                     </select>
                 </div>
             </div>
 
             <div>
-                <button type="submit" class="button-primary">Tambahkan Program Kerja</button>
+                <button type="submit" class="button-primary">Perbarui</button>
             </div>
 
         </form>

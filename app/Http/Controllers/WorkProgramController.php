@@ -8,6 +8,8 @@ use App\Models\Organization;
 use App\Models\Position;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class WorkProgramController extends Controller
 {
@@ -47,7 +49,7 @@ class WorkProgramController extends Controller
         $positions = Position::where('departements_id', $deptId)->get();
         // dd($organization);
         return view('proker.create', [
-            'active' => 'member',
+            'active' => 'proker',
             'organization' => $organization,
             'departement' => $departement,
             'positions' => $positions,
@@ -79,7 +81,15 @@ class WorkProgramController extends Controller
      */
     public function show(WorkProgram $workProgram)
     {
-        //
+        $departement =  $workProgram->departement;
+        $organization =  $workProgram->departement->organization;
+        // dd($organization);
+        return view('proker.show', [
+            'active' => 'proker',
+            'proker' => $workProgram,
+            'organization' => $organization,
+            'departement' => $departement,
+        ]);
     }
 
     /**
@@ -87,7 +97,18 @@ class WorkProgramController extends Controller
      */
     public function edit(WorkProgram $workProgram)
     {
-        //
+        $deptId = intval($_GET['dept']);
+        $departement = Departement::find($deptId);
+        $organization = Organization::find($departement->organization_id);
+        $positions = Position::where('departements_id', $deptId)->get();
+        // dd($organization);
+        return view('proker.edit', [
+            'active' => 'proker',
+            'organization' => $organization,
+            'departement' => $departement,
+            'positions' => $positions,
+            'proker' => $workProgram
+        ]);
     }
 
     /**
@@ -95,7 +116,26 @@ class WorkProgramController extends Controller
      */
     public function update(Request $request, WorkProgram $workProgram)
     {
-        //
+        $rules = [
+            'name_program' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            'departements_id' => 'required',
+            'status_program' => 'required',
+        ];
+        $request->validate($rules);
+
+        $workProgram->update([
+            'name_program' => $request->name_program,
+            'description' => $request->description,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'departements_id' => $request->departements_id,
+            'status_program' => $request->status_program,
+        ]);
+        Alert::alert('Berhasil', 'Program Kerja berhasil diperbaharui!', 'Success');
+        return redirect()->route('proker.index', ['org' => $request->organization_id])->with('success', 'Program Kerja berhasil diperbaharui');
     }
 
     /**
@@ -103,6 +143,9 @@ class WorkProgramController extends Controller
      */
     public function destroy(WorkProgram $workProgram)
     {
-        //
+        $organization = $workProgram->departement->organization;
+        $workProgram->delete();
+        Alert::alert('Berhasil', 'Kegiatan berhasil dihapus!', 'Success');
+        return redirect()->route('proker.index', ['org' => $organization])->with('success', 'Kegiatan berhasil dihapus.');
     }
 }

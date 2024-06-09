@@ -12,6 +12,7 @@ use App\Models\WorkProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DepartementController extends Controller
 {
@@ -114,6 +115,16 @@ class DepartementController extends Controller
     public function edit(Departement $departement)
     {
         //
+        $orgId = intval($_GET['org']);
+        $organization = Organization::find($orgId);
+        $departements = Departement::where('organization_id', $orgId)->get();
+        // dd($organization);
+        return view('departement.edit', [
+            'active' => 'struktur',
+            'departements' => $departements,
+            'organization' => $organization,
+            'departement' => $departement
+        ]);
     }
 
     /**
@@ -121,7 +132,22 @@ class DepartementController extends Controller
      */
     public function update(Request $request, Departement $departement)
     {
-        //
+        $rules = [
+            'name_departement' => 'required|string|max:255',
+            'organization_id' => 'required',
+            'parent_id' => 'nullable',
+            'description' => 'nullable|string',
+        ];
+        $request->validate($rules);
+        // $orgId = $request->input('organization_id');
+
+        $departement->update([
+            'name_departement' =>  $request->name_departement,
+            'parent_id' => $request->parent_id,
+            'description' => $request->description,
+        ]);
+        Alert::alert('Berhasil', 'Departement berhasil diperbaharui!', 'Success');
+        return redirect()->route('departement.show', ['departement' => $departement])->with('success', 'Departement berhasil diperbaharui');
     }
 
     /**
@@ -129,6 +155,9 @@ class DepartementController extends Controller
      */
     public function destroy(Departement $departement)
     {
-        //
+        $orgId = $departement->organization->id;
+        $departement->delete();
+        Alert::alert('Berhasil', 'Departement berhasil dihapus!', 'Success');
+        return redirect()->route('departement.index', ['org' => $orgId])->with('success', 'Departement berhasil dihapus.');
     }
 }
