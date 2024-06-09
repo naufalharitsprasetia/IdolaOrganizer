@@ -79,6 +79,7 @@ class AuthController extends Controller
 
         $rules = [
             'name' => 'required',
+            'gender' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ];
@@ -88,12 +89,15 @@ class AuthController extends Controller
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->gender = $request->gender;
         $user->password = Hash::make($request->password);
         $user->save();
 
         if ($user) {
+            Alert::alert('Berhasil', 'Akun berhasil dibuat!', 'Success');
             return redirect()->route('login')->with('success', 'Akun berhasil dibuat');
         } else {
+            Alert::alert('Error', 'Oooops... ada yang salah nih', 'warning');
             return redirect()->back()->with('error', 'Oooops... ada yang salah nih');
         }
     }
@@ -104,5 +108,28 @@ class AuthController extends Controller
             'active' => 'profile',
             'title' => 'profile'
         ]);
+    }
+    public function editProfile()
+    {
+        $user = Auth::user();
+        return view('auth.edit-profile', [
+            'active' => 'profile',
+            'title' => 'profile',
+            'user' => $user
+        ]);
+    }
+    public function updateProfile(Request $request, User $user)
+    {
+        $rules = [
+            'name' => 'required',
+            'gender' => 'required',
+        ];
+        $request->validate($rules);
+        $user->update([
+            'name' => $request->name,
+            'gender' => $request->gender,
+        ]);
+        Alert::alert('Berhasil', 'Akun berhasil diperbaharui!', 'Success');
+        return redirect()->route('profile')->with('success', 'Akun berhasil diperbaharui');
     }
 }

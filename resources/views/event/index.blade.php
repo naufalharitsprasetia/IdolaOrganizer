@@ -3,12 +3,16 @@
 @section('content')
     <div class="container mx-auto px-4">
         <h1 class="text-2xl font-bold mb-4">Kalender Event</h1>
-        <div id="calendar"></div>
+        <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
+            <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+                <div id="calendar"></div>
+            </div>
+        </div>
     </div>
     <!-- Modal -->
     <div id="eventModal" class="modal">
         <div class="modal-content">
-            <span>Title :</span>
+            <span>Judul :</span>
             <span class="close">&times;</span>
             <h2 id="eventTitle"></h2>
             <br>
@@ -18,7 +22,10 @@
             <p id="eventDateStart"></p>
             <p id="eventDateEnd"></p>
             <br>
+            <span>Lokasi :</span>
             <p id="eventLocation"></p>
+            <br>
+            <a href="" id="detailButton" class="button-primary">Detail</a>
         </div>
     </div>
 @endsection
@@ -34,7 +41,7 @@
 
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                events: '/event/list?org=1',
+                events: '/eventlist?org=' + {{ $organization->id }},
                 headerToolbar: {
                     left: 'prev,next today',
                     center: 'title',
@@ -48,6 +55,10 @@
                 },
                 eventClick: function(info) {
                     info.jsEvent.preventDefault();
+
+                    // ID href detail
+                    document.getElementById('detailButton').href = "/event/" + info.event.id +
+                        "?org=" + {{ $organization->id }};
 
                     document.getElementById('eventTitle').innerText = info.event.title;
                     document.getElementById('eventDescription').innerText = info.event.extendedProps

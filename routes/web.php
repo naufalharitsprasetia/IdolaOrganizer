@@ -41,6 +41,8 @@ Route::middleware('guest')->group(function () {
 });
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 Route::get('/profile', [AuthController::class, 'profile'])->name('profile')->middleware('auth');
+Route::get('/edit-profile', [AuthController::class, 'editProfile'])->name('edit-profile')->middleware('auth');
+Route::put('/edit-profile/{user}', [AuthController::class, 'updateProfile'])->name('update-profile')->middleware('auth');
 
 // ADMIN
 Route::get('/dashboard-admin', [AdminController::class, 'index'])->name('admin.index')->middleware(['auth', 'admin']);
@@ -51,6 +53,9 @@ Route::middleware('auth')->group(
         Route::get('/organisasi', [OrganizationController::class, 'index'])->name('organisasi.index');
         Route::get('/organisasi-create', [OrganizationController::class, 'create'])->name('organisasi.create');
         Route::post('/organisasi-create', [OrganizationController::class, 'store'])->name('organisasi.store');
+        Route::get('/organisasi-edit/{organization}', [OrganizationController::class, 'edit'])->name('organisasi.edit')->middleware('check.owner');
+        Route::put('/organisasi-edit/{organization}', [OrganizationController::class, 'update'])->name('organisasi.update')->middleware('check.owner');
+        Route::delete('/organisasi-delete/{organization}', [OrganizationController::class, 'destroy'])->name('organisasi.destroy')->middleware('check.owner');
     }
 );
 // AUTH MIDDLEWARE + CHECK ORGANIZATION ACCESS , parameter nya {{ organization }}, tambahin /{organization} disetiap route
@@ -67,8 +72,12 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         Route::post('/posisi/create', [PositionController::class, 'store'])->name('position.store');
         // Member
         Route::get('/member', [MemberController::class, 'index'])->name('member.index');
+        Route::post('/member/sync', [MemberController::class, 'sync'])->name('member.sync');
         Route::get('/member/create', [MemberController::class, 'create'])->name('member.create');
         Route::post('/member/create', [MemberController::class, 'store'])->name('member.store');
+        Route::get('/member/edit/{member}', [MemberController::class, 'edit'])->name('member.edit');
+        Route::put('/member/edit/{member}', [MemberController::class, 'update'])->name('member.update');
+        Route::delete('/member/delete/{member}', [MemberController::class, 'destroy'])->name('member.destroy');
         Route::get('/member/{member}', [MemberController::class, 'show'])->name('member.show');
         // Program Kerja
         Route::get('/proker', [WorkProgramController::class, 'index'])->name('proker.index');
@@ -80,9 +89,13 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         Route::post('/task/create', [TaskController::class, 'store'])->name('task.store');
         // Event
         Route::get('/event', [EventController::class, 'index'])->name('event.index');
-        Route::get('/event/list', [EventController::class, 'getEvents'])->name('event.list');
+        Route::get('/eventlist', [EventController::class, 'getEvents'])->name('event.list');
+        Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
         Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
         Route::post('/event/create', [EventController::class, 'store'])->name('event.store');
+        Route::get('/event/edit/{event}', [EventController::class, 'edit'])->name('event.edit');
+        Route::put('/event/edit/{event}', [EventController::class, 'update'])->name('event.update');
+        Route::delete('/event/delete/{event}', [EventController::class, 'destroy'])->name('event.destroy');
         // Keuangan (ROLE = bendahara)
         Route::get('/keuangan', [FinancialController::class, 'index'])->name('keuangan.index');
         Route::get('/keuangan/create', [FinancialController::class, 'create'])->name('keuangan.create');

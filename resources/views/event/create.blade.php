@@ -3,14 +3,15 @@
 @section('content')
     {{-- organization section --}}
     <div class="struktur-organization relative">
-        <a href="/struktur/{{ $departement->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
-        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Create Events - Departement :
+        <a href="/struktur/{{ $departement->id }}" class="button-primary md:absolute md:right-2 md:top-2">Kembali</a>
+        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3">Buat Kegiatan - Departement :
             {{ $departement->name_departement }} - ({{ $organization->singkatan_organization }})</h2>
 
         {{-- Form Start --}}
         <form class="space-y-6" action="/event/create" method="POST">
             @csrf
             <input type="hidden" name="departements_id" value="{{ $departement->id }}">
+            <input type="hidden" name="organization_id" value="{{ $organization->id }}">
             {{-- Input 1 --}}
             <div>
                 <label for="name_departement" class="text-primary font-bold">Departement*</label>

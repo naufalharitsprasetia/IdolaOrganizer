@@ -84,6 +84,22 @@
                     @enderror
                 </div>
             </div>
+            {{-- Input  5 --}}
+            <div>
+                <label for="description" class="text-primary font-bold">Lainnya (optional)</label>
+                <div class="mt-2">
+                    <input id="description" name="description" type="text"
+                        class="input-form-group @error('description')
+                                input-wrong
+                            @enderror "
+                        value="{{ old('description') }}">
+                    @error('description')
+                        <div class="label-error">
+                            error : {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+            </div>
             {{-- Input  6 --}}
             <div class="sm:col-span-3">
                 <label for="position_id" class="block leading-6 text-primary font-bold">Posisi</label>

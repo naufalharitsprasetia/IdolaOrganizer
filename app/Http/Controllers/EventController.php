@@ -8,6 +8,7 @@ use App\Models\Departement;
 use App\Models\Member;
 use App\Models\WorkProgram;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EventController extends Controller
 {
@@ -37,7 +38,9 @@ class EventController extends Controller
     }
     public function getEvents()
     {
-        $events = Event::all(['id', 'name_event as title', 'event_date_start as start', 'event_date_end as end', 'description as description', 'location as location']);
+        $organizationId = $_GET['org'];
+        $events = Event::where('organization_id', $organizationId)
+            ->get(['id', 'name_event as title', 'event_date_start as start', 'event_date_end as end', 'description as description', 'location as location']);
         return response()->json($events);
     }
     /**
@@ -69,10 +72,10 @@ class EventController extends Controller
             'event_date_start' => 'required|date',
             'event_date_end' => 'required|date',
             'location' => 'nullable|string',
-            'departements_id' => 'required',
             'member_id' => 'nullable',
+            'departements_id' => 'required',
+            'organization_id' => 'required',
         ]);
-
         Event::create($validatedData);
 
         // Redirect dengan pesan sukses
@@ -85,6 +88,14 @@ class EventController extends Controller
     public function show(Event $event)
     {
         //
+        $departement =  $event->departement;
+        $organization =  $event->departement->organization;
+        return view('event.show', [
+            'active' => 'event',
+            'event' => $event,
+            'organization' => $organization,
+            'departement' => $departement,
+        ]);
     }
 
     /**
@@ -93,6 +104,18 @@ class EventController extends Controller
     public function edit(Event $event)
     {
         //
+        $deptId = intval($_GET['dept']);
+        $departement = Departement::find($deptId);
+        $organization = Organization::find($departement->organization_id);
+        $members = Member::where('departements_id', $deptId)->get();
+        // dd($organization);
+        return view('event.edit', [
+            'active' => 'event',
+            'organization' => $organization,
+            'departement' => $departement,
+            'members' => $members,
+            'event' => $event,
+        ]);
     }
 
     /**
@@ -100,7 +123,26 @@ class EventController extends Controller
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $rules = [
+            'name_event' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'event_date_start' => 'required|date',
+            'event_date_end' => 'required|date',
+            'location' => 'nullable|string',
+            'member_id' => 'nullable',
+        ];
+        $request->validate($rules);
+
+        $event->update([
+            'name_event' => $request->name_event,
+            'description' => $request->description,
+            'event_date_start' => $request->event_date_start,
+            'event_date_end' => $request->event_date_end,
+            'location' => $request->location,
+            'member_id' => $request->member_id,
+        ]);
+        Alert::alert('Berhasil', 'Kegiatan berhasil diperbaharui!', 'Success');
+        return redirect()->route('event.show', ['event' => $event->id, 'org' => $request->organization_id])->with('success', 'Kegiatan berhasil diperbaharui');
     }
 
     /**

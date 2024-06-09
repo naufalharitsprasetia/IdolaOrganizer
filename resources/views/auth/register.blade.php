@@ -32,7 +32,7 @@
                             @enderror placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fourth sm:text-sm sm:leading-6"
                             value="{{ old('name') }}">
                         @error('name')
-                            <div class="label-error">
+                            <div class="label-error bg-white mt-3">
                                 error : {{ $message }}
                             </div>
                         @enderror
@@ -56,13 +56,37 @@
                             @enderror placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fourth sm:text-sm sm:leading-6"
                             value="{{ old('email') }}">
                         @error('email')
-                            <div class="label-error">
+                            <div class="label-error bg-white mt-3">
                                 error : {{ $message }}
                             </div>
                         @enderror
                     </div>
                 </div>
 
+                {{-- Gender --}}
+                <div class="">
+                    <div class="flex items-center justify-between">
+                        <label for="gender" class="block text-sm font-medium leading-6 text-third">Status</label>
+                    </div>
+                    <div class="mt-2">
+                        <select id="gender" name="gender"
+                            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 @error('gender')
+                                input-wrong
+                            @enderror placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fourth sm:text-sm sm:leading-6"
+                            required>
+                            <option value="">Pilih</option>
+                            <option value="male">Laki-Laki</option>
+                            <option value="female">Perempuan</option>
+                        </select>
+                        @error('gender')
+                            <div class="label-error bg-white mt-3">
+                                error : {{ $message }}
+                            </div>
+                        @enderror
+                    </div>
+                </div>
+                {{--  --}}
+                {{-- PW --}}
                 <div>
                     <div class="flex items-center justify-between">
                         <label for="password" class="block text-sm font-medium leading-6 text-third">Password</label>
@@ -73,13 +97,12 @@
                                 input-wrong
                             @enderror placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fourth sm:text-sm sm:leading-6">
                         @error('password')
-                            <div class="label-error">
+                            <div class="label-error bg-white mt-3">
                                 error : {{ $message }}
                             </div>
                         @enderror
                     </div>
                 </div>
-
                 <div>
                     <button type="submit"
                         class="flex w-full justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-fourth focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fourth">Daftar</button>

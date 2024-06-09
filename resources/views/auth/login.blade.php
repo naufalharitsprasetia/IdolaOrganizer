@@ -41,7 +41,7 @@
                                 input-wrong
                             @enderror  placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-fourth sm:text-sm sm:leading-6">
                         @error('email')
-                            <div class="label-error">
+                            <div class="label-error bg-white mt-3">
                                 error : {{ $message }}
                             </div>
                         @enderror
@@ -62,7 +62,7 @@
                                 input-wrong
                             @enderror placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:yellow-indigo-600 sm:text-sm sm:leading-6">
                         @error('password')
-                            <div class="label-error">
+                            <div class="label-error bg-white mt-3">
                                 error : {{ $message }}
                             </div>
                         @enderror

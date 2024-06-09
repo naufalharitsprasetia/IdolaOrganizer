@@ -62,22 +62,7 @@
                     </div>
                 </div>
                 {{-- Input 3 --}}
-                {{-- <div>
-                    <label for="logo" class="label-input-group">Logo Organisasi*</label>
-                    <div class="mt-2">
-                        <input id="logo" name="logo" type="file" required
-                            class="bg-white text-primary placeholder:text-primary rounded-lg  @error('logo')
-                                input-wrong
-                            @enderror "
-                            value="{{ old('logo') }}">
-                        @error('logo')
-                            <div class="label-error">
-                                error : {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                </div> --}}
-                {{--  --}}
+
                 <style>
                     /* Custom styling to hide the default input file */
                     .file-input {

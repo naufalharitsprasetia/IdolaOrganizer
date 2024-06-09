@@ -15,6 +15,9 @@
                 <li class="mx-2 hover:text-yellow-800 {{ $active === 'organisasi' ? 'text-yellow-800' : '' }}">
                     <a href="/organisasi"><i class="fa-solid fa-sitemap fa-flip"></i> Organisasi</a>
                 </li>
+                <li class="mx-2 hover:text-yellow-800 {{ $active === 'learning' ? 'text-yellow-800' : '' }}">
+                    <a href="/learning"><i class="fa-solid fa-book fa-flip"></i> Belajar</a>
+                </li>
                 <li class="mx-2 hover:text-yellow-800 {{ $active === 'about' ? 'text-yellow-800' : '' }}">
                     <a href="/about"><i class="fa-solid fa-circle-info fa-beat-fade"></i> Tentang</a>
                 </li>
@@ -45,7 +48,11 @@
                             <button type="button"
                                 class="w-full justify-center rounded-full shadow-sm overflow-hidden border-2 border-third focus:ring-2 focus:ring-primary hover:-translate-x-1 transition duration-300"
                                 aria-expanded="true" aria-haspopup="true">
-                                <img src="/img/avatar.jpg" alt="" class="w-10 " id="menu-button">
+                                @if (auth()->user()->gender == 'female')
+                                    <img src="/img/avatar-female.jpg" alt="" class="w-10 " id="menu-button">
+                                @else
+                                    <img src="/img/avatar-male.jpg" alt="" class="w-10 " id="menu-button">
+                                @endif
                             </button>
                         </div>
                         <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
@@ -96,9 +103,13 @@
                     <a href="/organisasi"
                         class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300  {{ $active === 'organisasi' ? 'bg-gray-300' : '' }}"
                         role="menuitem" tabindex="-1"><i class="fa-solid fa-sitemap fa-flip"></i> Organisasi</a>
+                    <a href="/learning"
+                        class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300  {{ $active === 'learning' ? 'bg-gray-300' : '' }}"
+                        role="menuitem" tabindex="-1"><i class="fa-solid fa-book fa-flip"></i> Belajar</a>
                     <a href="/about"
                         class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 {{ $active === 'about' ? 'bg-gray-300' : '' }}"
-                        role="menuitem" tabindex="-1"><i class="fa-solid fa-circle-info fa-beat-fade"></i> Tentang</a>
+                        role="menuitem" tabindex="-1"><i class="fa-solid fa-circle-info fa-beat-fade"></i>
+                        Tentang</a>
                     <a href="/contact"
                         class="text-gray-700 block px-4 py-2 text-sm hover:bg-gray-300 {{ $active === 'contact' ? 'bg-gray-300' : '' }}"
                         role="menuitem" tabindex="-1"><i class="fa-solid fa-id-card fa-shake"></i> Kontak</a>

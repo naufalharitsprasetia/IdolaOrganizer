@@ -9,9 +9,9 @@
                 {{ session('success') }}
             </div>
         @endif
-        <div class="button-secondary font-medium text-wrap my-3 text-center">
+        {{-- <div class="button-secondary font-medium text-wrap my-3 text-center">
             <a href="/proker/create?org={{ $organization->id }}" class="">Tambahkan Program Kerja</a>
-        </div>
+        </div> --}}
         <hr class="border-primary border-2">
         <br>
         {{--  --}}

@@ -14,7 +14,8 @@
                     Dashboard</a>
             </li>
             <li class="my-1 py-2 hover:text-sixth {{ $active === 'struktur' ? 'text-sixth' : '' }}">
-                <a href="/struktur?org={{ $organization->id }}"><i class="fa-solid fa-sitemap fa-fade"></i> Struktur</a>
+                <a href="/struktur?org={{ $organization->id }}"><i class="fa-solid fa-sitemap fa-fade"></i>
+                    Departement</a>
             </li>
             <li class="my-1 py-2 hover:text-sixth {{ $active === 'proker' ? 'text-sixth' : '' }}">
                 <a href="/proker?org={{ $organization->id }}"><i class="fa-solid fa-lightbulb fa-spin-pulse"></i>

@@ -35,9 +35,6 @@
                                     Email</th>
                                 <th
                                     class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
-                                    No Handphone</th>
-                                <th
-                                    class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
                                     Posisi</th>
                                 <th
                                     class="px-5 py-3 bg-white border-b border-gray-200 text-gray-800 text-left text-sm uppercase font-normal">
@@ -61,26 +58,30 @@
                                             {{ $member->email_member }}
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            {{ $member->phone_member }}
-                                        </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             {{ $member->position->name_positions }}
                                         </td>
                                         <td class=" bg-white">
                                             @if ($member->user_id != null)
-                                                <p class="text-white bg-green-400 px-2 py-1 rounded-lg ">
-                                                    Telah
-                                                    Sinkron</p>
+                                                <div class="flex flex-wrap gap-1 bg-white">
+                                                    <p class="text-white bg-green-400 px-2 py-1 rounded-lg ">
+                                                        Telah
+                                                        Sinkron</p>
+                                                </div>
                                             @else
-                                                <button data-member-id="{{ $member->id }}"
-                                                    class="sync-button text-white bg-rose-500 px-2 py-1 rounded-lg hover:opacity-80">Belum
-                                                    Sinkron</button>
+                                                <div class="flex flex-wrap gap-1 bg-white">
+                                                    <button data-member-id="{{ $member->id }}"
+                                                        data-member-email="{{ $member->email_member }}" type="button"
+                                                        class="sync-button text-white bg-rose-500 px-2 py-1 rounded-lg hover:opacity-80">Belum
+                                                        Sinkron</button>
+                                                </div>
                                             @endif
                                         </td>
                                         <td class=" bg-white">
                                             <div class="flex flex-wrap gap-1 bg-white">
                                                 <a href="/member/{{ $member->id }}?org={{ $organization->id }}"
                                                     class="text-white bg-blue-600 px-2 py-1 rounded-lg hover:opacity-80">Detail</a>
+                                                <a href="/member/delete/{{ $member->id }}?org={{ $organization->id }}"
+                                                    class="text-white bg-red-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -97,11 +98,13 @@
     <div id="syncModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
         <div class="bg-white p-6 rounded shadow-lg">
             <h2 class="text-xl mb-4">Sync Member</h2>
-            <form id="syncForm" method="POST" action="{{ route('sync.member') }}">
+            <p class="text-xs mb-2 text-red-500">ubah data member untuk mengganti email dibawah</p>
+            <form id="syncForm" method="POST" action="{{ route('member.sync') }}">
                 @csrf
                 <input type="hidden" name="member_id" id="member_id">
-                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                <input type="email" name="email" id="email"
+                <input type="hidden" name="organization_id" id="organization_id" value="{{ $organization->id }}">
+                <label for="email" class="block text-sm font-medium text-gray-700">User Email</label>
+                <input type="email" name="email" id="email" readonly
                     class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
                 <div class="mt-4">
                     <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Sync</button>
@@ -116,6 +119,7 @@
         document.querySelectorAll('.sync-button').forEach(button => {
             button.addEventListener('click', function() {
                 document.getElementById('member_id').value = this.getAttribute('data-member-id');
+                document.getElementById('email').value = this.getAttribute('data-member-email');
                 document.getElementById('syncModal').classList.remove('hidden');
             });
         });

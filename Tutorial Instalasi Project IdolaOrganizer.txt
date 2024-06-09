@@ -1,6 +1,6 @@
-Assalamualaikum Wr.Wb.
+~~ Assalamualaikum Wr.Wb. ~~
 
-Disini kami akan membantu untuk cara instalasi project IdolaOrganizer ini berikut langkah-langkahnya : 
+Kami dari kelompok DAWET (Darussalam Web Community) ingin menjelaskan cara instalasi project IdolaOrganizer ini berikut langkah-langkahnya : 
 
 1. Download & Install Laragon atau Xampp terlebih dahulu (apache,mysql).
 
@@ -10,21 +10,25 @@ Disini kami akan membantu untuk cara instalasi project IdolaOrganizer ini beriku
 
 4. Buka terminal, masuk ke direktori "xampp/htdocs/idolaOrganizer" (xampp) atau "laragon/www/idolaOrganizeer" (laragon).
 
-5. ketik/jalankan "composer --self update" (untuk menginstall package/module di aplikasi ini).
+5. ketik/jalankan "composer update" (untuk menginstall package/module di aplikasi ini).
 
 6. ketik/jalankan "npm install" (untuk menginstall package/module di aplikasi ini).
 
 7. buka phpmyadmin (mysql), selanjutnya buatlah Database baru dengan nama database "idolaorganizer".
 
-9. buka file .env yang tadi dalam code editor anda, sesuaikan konfigurasi Databasenya di .env :
+8. buka file .env yang tadi dalam code editor anda, sesuaikan konfigurasi Databasenya di .env :
 
-DB_DATABASE= (isikan dengan nama Database yang tadi anda buat)
+DB_DATABASE= idolaorganizer (*isikan/sesuaikan dengan nama Database yang tadi dibuat*)
+
+DB_PORT= (defaultnya 3306, jika di device anda berbeda maka ganti saja)
 DB_USERNAME=root (defaultnya root, jika di device anda berbeda maka ganti saja)
 DB_PASSWORD= (defaultnya kosong, jika di device anda berbeda maka ganti saja)
 
-10. ketik/jalankan "php artisan migrate:fresh --seed" untuk menjalankan migrasi dan seeder nya.
+9. ketik/jalankan "php artisan key:generate" untuk membuat APP_KEY nya
 
-11. jalankan "php artisan storage:link" untuk membuat symbolic link.
+10. jalankan "php artisan storage:link" untuk membuat symbolic link.
+
+11. ketik/jalankan "php artisan migrate:fresh --seed" untuk menjalankan migrasi dan seeder nya.
 
 12. jalankan aplikasi di terminal ketik "php artisan serve"
 
@@ -32,30 +36,28 @@ DB_PASSWORD= (defaultnya kosong, jika di device anda berbeda maka ganti saja)
 
 14. Selesai !! anda telah berhasil.
 
-
-
 Note = Versi yang digunakan dalam  aplikasi ini :
-- Laravel = Versi
-- NPM (Node Package Manager) = Versi 
-- Composer
-- Laragon (Untuk Web Server) = Laragon V.
-- Tailwind =  
-- PHP =
+- Laravel = Versi 10.48.12
+- NPM (Node Package Manager) = Versi 10.5.2 
+- Composer = versi 2.5.8
+- Laragon (Untuk Web Server) = Laragon versi 6.0
+- PHP = versi 8.1.10
 
 NB :
-
 - Jika ada kendala dalam menjalankan / meng-install aplikasinya , silahkan hubungi Nomer saya : 0812-2059-4202 (WhatsApp) A.N (Naufal Harits P)
 
 - Ada 3 Akun yang sudah terdaftar di seeder :
 	1. email = superadmin@gmail.com | password = bismillah
-	2. email = naufal@gmail.com | password = bismillah (2 Organisasi)
-	3. email = fulan@gmail.com | password = 123456789
+	2. email = naufal@gmail.com | password = bismillah (1 Organisasi)
+	3. email = wahyudi@gmail.com | password = 123456789 
 
 keterangan tambahan -> 
 1. untuk yg email supeadmin itu memiliki akses admin (is_admin=true) , akun ini bisa melihat jumlah semua users yang terdaftar di aplikasi ini dan jumlah organisasi yang terdaftar di aplikasi ini (route = "/dashboard-admin").
-2. akun biasa, sudah ada 2 Organisasi didalam nya, dan di dalam 2 organisasi tersebut sudah ada berbagai macam departement/bagian, posisi, anggota, program kerja, tugas, dan kegiatan.
+2. akun biasa, sudah ada 1 Organisasi didalam nya, dan di dalam 1 organisasi tersebut sudah ada berbagai macam departement/bagian, posisi, anggota, program kerja, tugas, dan kegiatan.
 3. akun biasa, belum terdapat apa-apa
 
 
-- 
+- Video tutorial Instalasi : 
+- Repository Github : https://github.com/naufalharitsprasetia/IdolaOrganizer
 
+AUTHOR : -Naufal Harits -Alvin Arya -Mohamad Farhat

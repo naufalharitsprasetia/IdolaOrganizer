@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('email_member')->nullable();
             $table->string('phone_member')->nullable();
             $table->text('address_member')->nullable();
+            $table->text('description')->nullable();
             $table->boolean('status_active')->default(true);
             $table->foreign('departements_id')->references('id')->on('departements')->onDelete('cascade');
             $table->foreign('position_id')->references('id')->on('positions')->onDelete('cascade');

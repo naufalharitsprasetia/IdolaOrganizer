@@ -51,12 +51,18 @@
                             <a href="/member/{{ $member->id }}?org={{ $organization->id }}"
                                 class="mt-1 text-xs font-semibold leading-5 text-fourth rounded-lg px-3 py-2 bg-secondary hover:text-secondary hover:bg-fourth border-2 hover:border-secondary">Detail</a>
                             @if ($member->user_id != null)
-                                <p
-                                    class="mt-1 text-xs font-semibold leading-5 text-slate-400 rounded-lg px-3 py-2 bg-green-500">
-                                    Telah Sinkron ✅</p>
+                                <div class="flex flex-wrap gap-1 bg-white">
+                                    <p class="text-white bg-green-400 px-2 py-1 rounded-lg ">
+                                        Telah
+                                        Sinkron</p>
+                                </div>
                             @else
-                                <button type="button" onclick=""
-                                    class="mt-1 text-xs font-semibold leading-5 text-slate-200 rounded-lg px-3 py-2 bg-blue-700 hover:text-slate-100 hover:bg-blue-500 border-2 hover:border-blue-700">Sync</button>
+                                <div class="flex flex-wrap gap-1 bg-white">
+                                    <button data-member-id="{{ $member->id }}"
+                                        data-member-email="{{ $member->email_member }}" type="button"
+                                        class="sync-button text-white bg-rose-500 px-2 py-1 rounded-lg hover:opacity-80">Belum
+                                        Sinkron</button>
+                                </div>
                             @endif
                         </div>
                     </li>
@@ -251,7 +257,7 @@
                                     </td>
                                     <td class=" bg-white">
                                         <div class="flex flex-wrap gap-1 bg-white">
-                                            <a href=""
+                                            <a href="/event/{{ $event->id }}?org={{ $organization->id }}"
                                                 class="text-white bg-blue-600 px-2 py-1 rounded-lg hover:opacity-80">Detail</a>
 
                                             <a href=""
@@ -276,4 +282,39 @@
         </div>
 
     </div>
+    <!-- Modal Input Email -->
+    <div id="syncModal" class="hidden fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center">
+        <div class="bg-white p-6 rounded shadow-lg">
+            <h2 class="text-xl mb-4">Sync Member</h2>
+            <p class="text-xs mb-2 text-red-500">ubah data member untuk mengganti email dibawah</p>
+            <form id="syncForm" method="POST" action="{{ route('member.sync') }}">
+                @csrf
+                <input type="hidden" name="member_id" id="member_id">
+                <input type="hidden" name="organization_id" id="organization_id" value="{{ $organization->id }}">
+                <label for="email" class="block text-sm font-medium text-gray-700">User Email</label>
+                <input type="email" name="email" id="email" readonly
+                    class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+                <div class="mt-4">
+                    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Sync</button>
+                    <button type="button" class="close-modal bg-red-500 text-white px-4 py-2 rounded">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{-- Script --}}
+    <script>
+        // Buka Modal Sync
+        document.querySelectorAll('.sync-button').forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('member_id').value = this.getAttribute('data-member-id');
+                document.getElementById('email').value = this.getAttribute('data-member-email');
+                document.getElementById('syncModal').classList.remove('hidden');
+            });
+        });
+
+        // Tutup Modal
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            document.getElementById('syncModal').classList.add('hidden');
+        });
+    </script>
 @endsection

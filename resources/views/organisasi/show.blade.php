@@ -11,6 +11,25 @@
         </div>
         <p>Deskripsi : {{ $organization->description_organization }}</p>
     </div>
+    <hr class="border-1 border-primary my-2">
+    <div class="info-other flex gap-4 justify-center items-center flex-wrap">
+        <div class="card bg-white shadow-lg p-2 rounded-lg text-center mx-4">
+            <h3>{{ count($organization->prokers) }}</h3>
+            <p>Departement</p>
+        </div>
+        <div class="card bg-white shadow-lg p-2 rounded-lg text-center mx-4">
+            <h3>{{ count($organization->memberss) }}</h3>
+            <p>Anggota</p>
+        </div>
+        <div class="card bg-white shadow-lg p-2 rounded-lg text-center mx-4">
+            <h3>{{ count($organization->events) }}</h3>
+            <p>Kegiatan</p>
+        </div>
+        <div class="card bg-white shadow-lg p-2 rounded-lg text-center mx-4">
+            <h3>{{ count($organization->prokers) }}</h3>
+            <p>Program Kerja</p>
+        </div>
+    </div>
 @endsection
 @section('secondContent')
     {{-- Dashboard --}}

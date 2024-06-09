@@ -121,6 +121,8 @@ class OrganizationController extends Controller
     public function edit(Organization $organization)
     {
         //
+        $active = 'organisasi';
+        return view('organisasi.edit', compact('organization', 'active'));
     }
 
     /**
@@ -129,6 +131,14 @@ class OrganizationController extends Controller
     public function update(Request $request, Organization $organization)
     {
         //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $organization->update($request->all());
+
+        return redirect()->route('organisasi.show', $organization->id)->with('success', 'Organisasi berhasil diperbarui.');
     }
 
     /**
@@ -137,5 +147,8 @@ class OrganizationController extends Controller
     public function destroy(Organization $organization)
     {
         //
+        $organization->delete();
+
+        return redirect()->route('/organisasi')->with('success', 'Organisasi berhasil dihapus.');
     }
 }

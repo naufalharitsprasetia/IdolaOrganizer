@@ -40,14 +40,14 @@
             <div>
                 <label for="description" class="text-primary font-bold">Deskripsi (optional)</label>
                 <div class="mt-2">
-                    <input id="description" name="description" type="text" required
+                    <input id="description" name="description" type="text"
                         class="input-form-group @error('description')
                                 input-wrong
                             @enderror "
                         value="{{ old('description') }}">
                     @error('description')
                         <div class="label-error">
-                            error : {{ $message }}
+                            error : {{ $message }}s
                         </div>
                     @enderror
                 </div>

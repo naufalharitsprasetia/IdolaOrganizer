@@ -80,3 +80,25 @@ function topFunction() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+// DeleteConfirm
+function deleteConfirm() {
+  Swal.fire({
+    title: "Apakah kamu yakin ingin menghapus ini?",
+    text: "data yang anda hapus tidak dapat kembali !",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Ya, Hapus!",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "Penghapusan Berhasil!",
+        text: "Anda telah berhasil menghapus data ini !",
+        icon: "success",
+      });
+      document.getElementById("formDelete").submit();
+    }
+  });
+}

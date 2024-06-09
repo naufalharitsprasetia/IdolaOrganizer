@@ -24,6 +24,14 @@ class Organization extends Model
     {
         return $this->hasMany(Departement::class, 'organization_id');
     }
+    public function prokers()
+    {
+        return $this->hasManyThrough(WorkProgram::class, Departement::class, 'organization_id', 'departements_id');
+    }
+    public function events()
+    {
+        return $this->hasManyThrough(Event::class, Departement::class, 'organization_id', 'departements_id');
+    }
     // Relasi dengan user yang membuat organisasi
     public function owner()
     {

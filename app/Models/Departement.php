@@ -10,7 +10,6 @@ class Departement extends Model
     use HasFactory;
     protected $table = 'departements';
     protected $guarded = ['id'];
-    protected $with = ['organization'];
 
 
     public function events()
@@ -37,5 +36,14 @@ class Departement extends Model
     public function organization()
     {
         return $this->belongsTo(Organization::class, 'organization_id');
+    }
+    public function children()
+    {
+        return $this->hasMany(Departement::class, 'parent_id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Departement::class, 'parent_id');
     }
 }

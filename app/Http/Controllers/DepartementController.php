@@ -24,10 +24,16 @@ class DepartementController extends Controller
         $orgId = intval($_GET['org']);
         $organization = Organization::find($orgId);
         // dd($organization);
-        $departements = Departement::where('organization_id', $orgId)->get();
+        $departementss = Departement::where('organization_id', $orgId)->get();
+        $departements = Departement::with('children')
+            ->where('organization_id', $orgId)
+            ->whereNull('parent_id')
+            ->get();
+
         return view('departement.index', [
             'active' => 'struktur',
             'departements' => $departements,
+            'departementss' => $departementss,
             'organization' => $organization
         ]);
     }

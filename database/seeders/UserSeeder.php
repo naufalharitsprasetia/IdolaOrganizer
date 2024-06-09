@@ -23,16 +23,19 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Naufal Harits Prasetia',
                 'email' => 'naufal@gmail.com',
+                'gender' => 'male',
                 'password' => Hash::make('bismillah'),
                 'created_at' => Carbon::now(),
             ], [
-                'name' => 'Fulan Ahmad',
-                'email' => 'fulan@gmail.com',
+                'name' => 'Nur Wahyudi',
+                'email' => 'wahyudi@gmail.com',
+                'gender' => 'male',
                 'password' => Hash::make('123456789'),
                 'created_at' => Carbon::now(),
             ],   [
                 'name' => 'Super Admin',
                 'email' => 'superadmin@gmail.com',
+                'gender' => 'male',
                 'password' => Hash::make('bismillah'),
                 'is_admin' => true,
                 'created_at' => Carbon::now(),
