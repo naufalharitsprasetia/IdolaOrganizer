@@ -10,4 +10,9 @@ class Position extends Model
     use HasFactory;
     protected $table = 'positions';
     protected $guarded = ['id'];
+
+    public function departement()
+    {
+        return $this->belongsTo(Departement::class, 'departements_id');
+    }
 }

@@ -86,7 +86,7 @@
 
                 <div>
                     <button type="submit"
-                        class="shadow-xl flex w-1/3 justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Daftar</button>
+                        class="shadow-xl flex w-1/3 justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Buat</button>
                 </div>
 
             </form>

@@ -7,7 +7,7 @@
     {{-- organization section --}}
     <div class="struktur-organization relative">
         <a href="/struktur?org={{ $organization->id }}" class="button-primary md:absolute md:right-2 md:top-2">Back</a>
-        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3 underline">Departement (Bagian) :
+        <h2 class="text-2xl font-semibold mt-1 mb-6 mx-3 text-center">Departement (Bagian) :
             {{ $departement->name_departement }}</h2>
         <p class="text-base font-medium mt-1 mb-6 mx-3">Deskripsi : "{{ $departement->description }}"</p>
         <hr>
@@ -24,7 +24,17 @@
             </div>
             <ul class="mt-3 ml-3">
                 @foreach ($positions as $position)
-                    <li>- {{ $position->name_positions }}</li>
+                    <li class="text-lg my-2">- {{ $position->name_positions }} | <a
+                            href="/posisi-edit/{{ $position->id }}?dept={{ $departement->id }}"
+                            class="bg-yellow-400 p-1 text-white rounded-lg text-base">Edit</a>
+                        | <form action="/posisi-delete/{{ $position->id }}?org={{ $organization->id }}"
+                            id="formDelete-{{ $position->id }}" method="POST" class="inline">
+                            @method('delete')
+                            @csrf
+                            <button type="button" onclick="deleteConfirm({{ $position->id }})"
+                                class="bg-rose-400 p-1 text-white rounded-lg text-base">Delete</button>
+                        </form>
+                    </li>
                 @endforeach
             </ul>
         </div>
@@ -175,7 +185,12 @@
                                                 class="text-xs">({{ $task->days_remaining }} Hari Lagi)</span></p>
                                     </td>
                                     <td class="tableTd">
-                                        <p class="text-gray-900 whitespace-no-wrap">{{ $task->member->name_member }}</p>
+                                        @if (isset($task->member->name_member))
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $task->member->name_member }}
+                                            </p>
+                                        @else
+                                            <p class="text-gray-900 whitespace-no-wrap">-</p>
+                                        @endif
                                     </td>
                                     </td>
                                     <td class=" bg-white">
@@ -249,7 +264,13 @@
                                         </p>
                                     </td>
                                     <td class="tableTd">
-                                        <p class="text-gray-900 whitespace-no-wrap">{{ $event->member->name_member }}</p>
+                                        @if (isset($event->member->name_member))
+                                            <p class="text-gray-900 whitespace-no-wrap">{{ $event->member->name_member }}
+                                            </p>
+                                        @else
+                                            <p class="text-gray-900 whitespace-no-wrap">-
+                                            </p>
+                                        @endif
                                     </td>
                                     <td class="tableTd">
                                         <p class="text-gray-900 whitespace-no-wrap">{{ $event->location }}</p>

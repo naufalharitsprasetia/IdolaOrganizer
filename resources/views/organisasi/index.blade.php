@@ -60,16 +60,21 @@
                             <div class="progress-bar px-2"></div>
                             <a href="/organisasi/{{ $organization->id }}"
                                 class="px-2 py-1 bg-primary text-fourth rounded-lg border-1 hover:bg-fourth hover:text-primary hover:ring-2 hover:ring-inset hover:ring-primary text-center">Kelola</a>
-                            @if ($organization->id == auth()->user()->id)
+                            @if ($organization->user_id == auth()->user()->id)
                                 <button type="button"
                                     class="ownerBtn bg-green-500 rounded-lg top-2 right-2 p-1 text-xs text-slate-200 absolute">Owner
                                     🔽</button>
                                 <div
                                     class="menuOrg absolute bg-green-400 text-slate-200 top-8 right-2 flex flex-col overflow-hidden rounded-md text-xs hidden">
                                     <a href="/organisasi-edit/{{ $organization->id }}"
-                                        class="hover:bg-green-500 px-2 py-1">Edit</a>
-                                    <a href="/organisasi-delete/{{ $organization->id }}"
-                                        class="hover:bg-green-500 px-2 py-1">Delete</a>
+                                        class="hover:bg-yellow-400 px-2 py-1">Edit</a>
+                                    <form id="formDelete-{{ $organization->id }}"
+                                        action="/organisasi-delete/{{ $organization->id }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="button" onclick="deleteConfirm({{ $organization->id }})"
+                                            class="hover:bg-red-500 px-2 py-1">Delete</button>
+                                    </form>
                                 </div>
                             @endif
                         </div>

@@ -9,7 +9,9 @@
                 Organisasi
             </h2>
             {{-- Form Start --}}
-            <form class="space-y-6" action="" method="POST" enctype="multipart/form-data">
+            <form class="space-y-6" action="/organisasi-edit/{{ $organization->id }}" method="POST"
+                enctype="multipart/form-data">
+                @method('put')
                 @csrf
                 {{-- Input 1 --}}
                 <div>
@@ -68,8 +70,9 @@
                         display: none;
                     }
                 </style>
+                <input type="hidden" name="oldImage" value="{{ $organization->logo_organization }}">
                 <div class="bg-white px-3 py-3 rounded-lg shadow-lg">
-                    <span class="text-primary font-bold">Logo Organinsasi*</span>
+                    <span class="text-primary font-bold">Logo Organinsasi (Jika Ingin Diubah)</span>
                     <label for="logo_organization"
                         class="cursor-pointer flex items-center justify-center px-4 py-2 my-4 bg-primary text-white rounded-lg hover:bg-primary">
                         <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -85,7 +88,7 @@
 
                 <div>
                     <button type="submit"
-                        class="shadow-xl flex w-1/3 justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Daftar</button>
+                        class="shadow-xl flex w-1/3 justify-center rounded-md bg-fourth px-3 py-1.5 text-sm font-semibold leading-6 text-primary shadow-sm hover:bg-third focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary">Perbarui</button>
                 </div>
 
             </form>

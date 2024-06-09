@@ -80,8 +80,14 @@
                                             <div class="flex flex-wrap gap-1 bg-white">
                                                 <a href="/member/{{ $member->id }}?org={{ $organization->id }}"
                                                     class="text-white bg-blue-600 px-2 py-1 rounded-lg hover:opacity-80">Detail</a>
-                                                <a href="/member/delete/{{ $member->id }}?org={{ $organization->id }}"
-                                                    class="text-white bg-red-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus</a>
+                                                <form
+                                                    action="/member/delete/{{ $member->id }}?dept={{ $member->departements_id }}"
+                                                    id="formDelete-{{ $member->id }}" method="POST" class="inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="button" onclick="deleteConfirm({{ $member->id }})"
+                                                        class="text-white bg-red-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus</button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>

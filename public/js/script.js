@@ -82,10 +82,10 @@ function topFunction() {
 }
 
 // DeleteConfirm
-function deleteConfirm() {
+function deleteConfirm(organizationId) {
   Swal.fire({
     title: "Apakah kamu yakin ingin menghapus ini?",
-    text: "data yang anda hapus tidak dapat kembali !",
+    text: "semua data/progress di dalamnya dan data yang bersangkutan dengan data ini akan terhapus, data yang anda hapus tidak dapat kembali !",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
@@ -97,8 +97,9 @@ function deleteConfirm() {
         title: "Penghapusan Berhasil!",
         text: "Anda telah berhasil menghapus data ini !",
         icon: "success",
+      }).then(() => {
+        document.getElementById(`formDelete-${organizationId}`).submit();
       });
-      document.getElementById("formDelete").submit();
     }
   });
 }

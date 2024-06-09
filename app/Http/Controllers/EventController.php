@@ -150,6 +150,9 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        $departement = $event->departement;
+        $event->delete();
+        Alert::alert('Berhasil', 'Kegiatan berhasil dihapus!', 'Success');
+        return redirect()->route('departement.show', ['departement' => $departement])->with('success', 'Kegiatan berhasil dihapus.');
     }
 }

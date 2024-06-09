@@ -152,5 +152,11 @@ class MemberController extends Controller
 
     public function destroy(Member $member)
     {
+        //
+        $organizationId = $member->departement->organization->id;
+        $member->delete();
+
+        Alert::alert('Berhasil', 'Member berhasil dihapus!', 'Success');
+        return redirect()->route('member.index', ['org' => $organizationId])->with('success', 'Member berhasil dihapus.');
     }
 }

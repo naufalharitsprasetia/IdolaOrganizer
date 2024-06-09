@@ -6,6 +6,7 @@ use App\Models\Position;
 use Illuminate\Http\Request;
 use App\Models\Departement;
 use App\Models\Organization;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PositionController extends Controller
 {
@@ -70,6 +71,18 @@ class PositionController extends Controller
     public function edit(Position $position)
     {
         //
+        $deptId = intval($_GET['dept']);
+        $departement = Departement::find($deptId);
+        $organization = Organization::find($departement->organization_id);
+        $positions = Position::where('departements_id', $deptId)->get();
+        // dd($organization);
+        return view('position.edit', [
+            'active' => 'struktur',
+            'organization' => $organization,
+            'departement' => $departement,
+            'positions' => $positions,
+            'position' => $position
+        ]);
     }
 
     /**
@@ -77,7 +90,21 @@ class PositionController extends Controller
      */
     public function update(Request $request, Position $position)
     {
-        //
+        $rules = [
+            'name_positions' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'parent_id' => 'nullable|string|max:255',
+        ];
+        $request->validate($rules);
+        $deptId = $request->input('departements_id');
+
+        $position->update([
+            'name_positions' =>  $request->name_positions,
+            'description' =>  $request->description,
+            'parent_id' => $request->parent_id,
+        ]);
+        Alert::alert('Berhasil', 'Posisi berhasil diperbaharui!', 'Success');
+        return redirect()->route('departement.show', ['departement' => $deptId])->with('success', 'Posisi berhasil diperbaharui');
     }
 
     /**
@@ -85,6 +112,9 @@ class PositionController extends Controller
      */
     public function destroy(Position $position)
     {
-        //
+        $departement = $position->departement;
+        $position->delete();
+        Alert::alert('Berhasil', 'Position berhasil dihapus!', 'Success');
+        return redirect()->route('departement.show', ['departement' => $departement])->with('success', 'Posisi berhasil dihapus.');
     }
 }

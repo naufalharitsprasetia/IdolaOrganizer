@@ -70,6 +70,9 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         // Positions
         Route::get('/posisi/create', [PositionController::class, 'create'])->name('position.create');
         Route::post('/posisi/create', [PositionController::class, 'store'])->name('position.store');
+        Route::get('/posisi-edit/{position}', [PositionController::class, 'edit'])->name('position.edit');
+        Route::put('/posisi-edit/{position}', [PositionController::class, 'update'])->name('position.update');
+        Route::delete('/posisi-delete/{position}', [PositionController::class, 'destroy'])->name('position.destroy');
         // Member
         Route::get('/member', [MemberController::class, 'index'])->name('member.index');
         Route::post('/member/sync', [MemberController::class, 'sync'])->name('member.sync');

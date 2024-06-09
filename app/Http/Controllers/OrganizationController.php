@@ -8,6 +8,7 @@ use App\Models\WorkProgram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class OrganizationController extends Controller
 {
@@ -132,13 +133,30 @@ class OrganizationController extends Controller
     {
         //
         $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
+            'name_organization' => 'required|string|max:255',
+            'description_organization' => 'nullable|string',
+            'singkatan_organization' => 'required|string',
         ]);
 
-        $organization->update($request->all());
 
-        return redirect()->route('organisasi.show', $organization->id)->with('success', 'Organisasi berhasil diperbarui.');
+        if ($request->file('logo_organization')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $logoBaru = $request->file('logo_organization')->store('public/img');
+            $logoBaru = str_replace('public/', '', $logoBaru);
+            $organization->update([
+                'logo_organization' => $logoBaru,
+            ]);
+        }
+
+        $organization->update([
+            'name_organization' => $request->input('name_organization'),
+            'description_organization' => $request->input('description_organization'),
+            'singkatan_organization' => $request->input('singkatan_organization'),
+        ]);
+
+        return redirect()->route('organisasi.index', $organization->id)->with('success', 'Organisasi berhasil diperbarui.');
     }
 
     /**
@@ -149,6 +167,6 @@ class OrganizationController extends Controller
         //
         $organization->delete();
 
-        return redirect()->route('/organisasi')->with('success', 'Organisasi berhasil dihapus.');
+        return redirect()->route('organisasi.index')->with('success', 'Organisasi berhasil dihapus.');
     }
 }
