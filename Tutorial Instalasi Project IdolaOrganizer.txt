@@ -5,7 +5,9 @@ Kami dari kelompok DAWET (Darussalam Web Community) ingin menjelaskan cara insta
 
 1. Download & Install Laragon atau Xampp terlebih dahulu (apache,mysql).
 
-2. Extract dawet_idolaOrganizer.zip kemudia cut/copy folder "idolaOrganizer" dalam folder "/www/.." untuk yg pakai laragon  "/htdocs/.." untuk yang pakai xampp.
+2. Extract dawet_idolaOrganizer.zip kemudian cut/copy folder "idolaOrganizer" kemudian paste/pindahkan ke folder 
+- "C:\laragon\www\.." untuk yg pakai laragon.
+- "C:\xampp\htdocs\.." untuk yang pakai xampp.
 
 3. Jika belum punya Composer silahkan install terlebih dahulu. jika ragu, silahkan cek terlebih dahulu, ketik "composer -v" di terminal.
 
@@ -15,13 +17,14 @@ Kami dari kelompok DAWET (Darussalam Web Community) ingin menjelaskan cara insta
 
 6. buka phpmyadmin (mysql), selanjutnya buatlah Database baru dengan nama database "idolaorganizer".
 
-7. buka file .env yang tadi dalam code editor anda, sesuaikan konfigurasi Databasenya di .env :
+7. copy dan paste file .env.example atau rename .env.example menjadi .env , Lalu buka file .env tersebut dalam code editor anda, kemudian sesuaikan konfigurasi Databasenya di file .env :
 
 DB_DATABASE= idolaorganizer (*isikan/sesuaikan dengan nama Database yang tadi dibuat*)
-
 DB_PORT= (defaultnya 3306, jika di device anda berbeda maka ganti saja)
 DB_USERNAME=root (defaultnya root, jika di device anda berbeda maka ganti saja)
 DB_PASSWORD= (defaultnya kosong, jika di device anda berbeda maka ganti saja)
+
+- jika sudah jangan lupa di save
 
 8. ketik/jalankan "php artisan key:generate" untuk membuat APP_KEY nya
 
