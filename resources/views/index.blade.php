@@ -44,8 +44,8 @@
         <div class="container mx-auto">
             <div class="flex flex-col">
                 <div class="flex ">
-                    <img src="/img/hero.png" class="w-96 mx-auto animate-bounce-slow" alt="" data-tilt
-                        data-tilt-glare data-tilt-max-glare="0.8">
+                    <img src="/img/hero.png" data-aos="zoom-in-up" class="w-96 mx-auto animate-bounce-slow" alt=""
+                        data-tilt data-tilt-glare data-tilt-max-glare="0.8">
                 </div>
                 <h2 class="py-2 px-2 text-3xl font-semibold">Tulis, Rencanakan, dan Kelola Organisasi-mu
                     Dengan
@@ -65,7 +65,7 @@
     <section id="about" class="md:pt-24 md:pb-28 w-full bg-third">
         <div class="container mx-auto">
             <div class="flex flex-col-reverse md:flex-row">
-                <div class="w-3/4 mb-8 md:mb-0 md:px-10 md:w-1/2 mx-auto">
+                <div class="w-3/4 mb-8 md:mb-0 md:px-10 md:w-1/2 mx-auto" data-aos="flip-left">
                     <h2 class="text-center md:text-left font-bold text-3xl text-slate-800 pb-5">Tentang Kami</h2>
                     <p class="font-semibold text-base text-slate-500 opacity-90">IdolaOrganizer adalah aplikasi manajemen
                         organisasi yang dirancang
@@ -75,7 +75,7 @@
                         kegiatan, program kerja, tugas, daftar anggota, dan fitur lainnya yang dapat
                         diatur dengan mudah dan efisien.</p>
                 </div>
-                <div class="my-5 md:my-0 md:px-10 w-1/2 mx-auto flex justify-center items-center">
+                <div class="my-5 md:my-0 md:px-10 w-1/2 mx-auto flex justify-center items-center" data-aos="flip-right">
                     <img src="/img/logox.png" class="h-auto max-w-full" alt="">
                 </div>
             </div>
@@ -91,11 +91,12 @@
             class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-third shadow-xl shadow-indigo-600/10 ring-1 ring-indigo-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center">
         </div>
         <div class="mx-auto max-w-2xl lg:max-w-4xl">
-            <h2 class="text-center font-semibold text-gray-900 text-2xl border-dashed border-y  -2 border-gray-900">
+            <h2 class="text-center font-semibold text-gray-900 text-2xl border-dashed border-y-2 border-gray-900"
+                data-aos="zoom-out-up">
                 Testimoni
             </h2>
             {{-- <img class="mx-auto h-12" src="https://tailwindui.com/img/logos/workcation-logo-indigo-600.svg" alt=""> --}}
-            <figure class="mt-10">
+            <figure class="mt-10" data-aos="zoom-out-up">
                 <blockquote class="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9">
                     <p>“idolaOrganizer benar-benar mengubah cara kami mengelola organisasi. Dengan fitur manajemen
                         multi-organisasi dan pengelolaan yang mudah dimengerti, semua kegiatan kami berjalan lebih lancar
@@ -147,17 +148,18 @@
     {{-- Section Start --}}
     <div class="bg-fourth py-20 sm:py-24">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Project ini didukung oleh :</h2>
+            <h2 class="text-center text-lg font-semibold leading-8 text-gray-900" data-aos="zoom-in-up">Project ini didukung
+                oleh :</h2>
             <div
                 class="mx-auto mt-10 grid max-w-lg grid-cols-4 justify-center content-center items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-4 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
                 <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/dawet.PNG" alt="Dawet"
-                    width="200" height="100">
+                    width="200" height="100" data-aos="zoom-in-up">
                 <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/hmp.png" alt="Himatif"
-                    width="158" height="48">
+                    width="158" height="48" data-aos="zoom-in-up">
                 <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/ti.png" alt="TI"
-                    width="158" height="48">
+                    width="158" height="48" data-aos="zoom-in-up">
                 <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/unida.png" alt="Unida"
-                    width="158" height="48">
+                    width="158" height="48" data-aos="zoom-in-up">
             </div>
         </div>
     </div>

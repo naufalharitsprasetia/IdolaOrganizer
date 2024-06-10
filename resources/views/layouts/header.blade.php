@@ -15,6 +15,7 @@
     <script src="https://kit.fontawesome.com/0e361b3f2b.js" crossorigin="anonymous"></script>
     {{-- Own CSS --}}
     <link rel="stylesheet" href="/css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     @stack('styles') <!-- Stack untuk styles jika dibutuhkan -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
