@@ -33,8 +33,12 @@
         <hr class="border-2 border-primary">
         <ul class="flex flex-col justify-center items-center p-2 mx-2 font-semibold text-base text-primary ">
             <li class="mx-auto text-center">
-                <img src="{{ asset('/storage' . '/' . $organization->logo_organization) }}" class="w-20"
-                    alt="">
+                @if ($organization->logo_organization == 'img/dema.png')
+                    <img src="/img/dema.png" class="w-20" alt="">
+                @else
+                    <img src="{{ asset('/storage' . '/' . $organization->logo_organization) }}" class="w-20"
+                        alt="">
+                @endif
                 {{ $organization->singkatan_organization }}
             </li>
         </ul>

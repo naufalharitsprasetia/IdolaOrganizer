@@ -28,6 +28,8 @@ class CheckOrganizationAccess
         } elseif (isset($_GET['dept'])) {
             $dept2 = Departement::find($_GET['dept']);
             $organization = $dept2->organization;
+        } else {
+            abort(403);
         }
 
         // $organization = Organization::find($organizationId);

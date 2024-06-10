@@ -7,7 +7,11 @@
         <h2 class="mb-2">Singkatan : {{ $organization->singkatan_organization }}</h2>
         <div class="flex my-4">
             <h4 class="mr-4">Logo :</h4>
-            <img src="{{ asset('/storage' . '/' . $organization->logo_organization) }}" class="w-20" alt="">
+            @if ($organization->logo_organization == 'img/dema.png')
+                <img src="/img/dema.png" class="w-20" alt="">
+            @else
+                <img src="{{ asset('/storage' . '/' . $organization->logo_organization) }}" class="w-20" alt="">
+            @endif
         </div>
         <p>Deskripsi : {{ $organization->description_organization }}</p>
     </div>

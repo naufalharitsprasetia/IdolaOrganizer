@@ -1,22 +1,21 @@
 ~~ Assalamualaikum Wr.Wb. ~~
 
 Kami dari kelompok DAWET (Darussalam Web Community) ingin menjelaskan cara instalasi project IdolaOrganizer ini berikut langkah-langkahnya : 
+- [untuk kelancaran dimohon untuk terkoneksi dengan internet selama instalasi/menjalankan aplikasi], terimakasih..
 
 1. Download & Install Laragon atau Xampp terlebih dahulu (apache,mysql).
 
-2. Extract dawet_idolaOrganizer.zip kemudia cut/copy folder "idolaOrganizer" dalam folder "/www" untuk yg pakai laragon  "/htdocs" untuk yang pakai xampp.
+2. Extract dawet_idolaOrganizer.zip kemudia cut/copy folder "idolaOrganizer" dalam folder "/www/.." untuk yg pakai laragon  "/htdocs/.." untuk yang pakai xampp.
 
-3. Jika belum punya NPM dan Composer silahkan install terlebih dahulu. jika ragu, silahkan cek terlebih dahulu, ketik "composer -v" dan "npm -v" di terminal.
+3. Jika belum punya Composer silahkan install terlebih dahulu. jika ragu, silahkan cek terlebih dahulu, ketik "composer -v" di terminal.
 
 4. Buka terminal, masuk ke direktori "xampp/htdocs/idolaOrganizer" (xampp) atau "laragon/www/idolaOrganizeer" (laragon).
 
 5. ketik/jalankan "composer update" (untuk menginstall package/module di aplikasi ini).
 
-6. ketik/jalankan "npm install" (untuk menginstall package/module di aplikasi ini).
+6. buka phpmyadmin (mysql), selanjutnya buatlah Database baru dengan nama database "idolaorganizer".
 
-7. buka phpmyadmin (mysql), selanjutnya buatlah Database baru dengan nama database "idolaorganizer".
-
-8. buka file .env yang tadi dalam code editor anda, sesuaikan konfigurasi Databasenya di .env :
+7. buka file .env yang tadi dalam code editor anda, sesuaikan konfigurasi Databasenya di .env :
 
 DB_DATABASE= idolaorganizer (*isikan/sesuaikan dengan nama Database yang tadi dibuat*)
 
@@ -24,21 +23,20 @@ DB_PORT= (defaultnya 3306, jika di device anda berbeda maka ganti saja)
 DB_USERNAME=root (defaultnya root, jika di device anda berbeda maka ganti saja)
 DB_PASSWORD= (defaultnya kosong, jika di device anda berbeda maka ganti saja)
 
-9. ketik/jalankan "php artisan key:generate" untuk membuat APP_KEY nya
+8. ketik/jalankan "php artisan key:generate" untuk membuat APP_KEY nya
 
-10. jalankan "php artisan storage:link" untuk membuat symbolic link.
+9. jalankan "php artisan storage:link" untuk membuat symbolic link.
 
-11. ketik/jalankan "php artisan migrate:fresh --seed" untuk menjalankan migrasi dan seeder nya.
+10. ketik/jalankan "php artisan migrate:fresh --seed" untuk menjalankan migrasi dan seeder nya.
 
-12. jalankan aplikasi di terminal ketik "php artisan serve"
+11. jalankan aplikasi di terminal ketik "php artisan serve"
 
-13. lalu akan muncul alamat website kita , biasanya "" , lalu ctrl+klik pada alamat di terminal tersebut atau buka di browser lalu ketik url "http://127.0.0.1:8000" 
+12. lalu akan muncul alamat website kita , biasanya "" , lalu ctrl+klik pada alamat di terminal tersebut atau buka di browser lalu ketik url "http://127.0.0.1:8000" 
 
-14. Selesai !! anda telah berhasil.
+13. Selesai !! anda telah berhasil.
 
 Note = Versi Aplikasi yang kami gunakan dalam  aplikasi ini :
 - Laravel = Versi 10.48.12
-- NPM (Node Package Manager) = Versi 10.5.2 
 - Composer = versi 2.5.8
 - Laragon (Untuk Web Server) = Laragon versi 6.0
 - PHP = versi 8.1.10
@@ -47,21 +45,23 @@ NB :
 - Jika ada kendala dalam menjalankan / meng-install aplikasinya , silahkan hubungi Nomer saya : 0812-2059-4202 (WhatsApp) A.N (Naufal Harits P)
 
 - Ada 3 Akun yang sudah terdaftar di seeder :
-	1. email = superadmin@gmail.com | password = bismillah
-	2. email = naufal@gmail.com | password = bismillah (1 Organisasi)
+	1. email = naufal@gmail.com | password = bismillah (1 Organisasi)
+	2. email = superadmin@gmail.com | password = bismillah
 	3. email = wahyudi@gmail.com | password = 123456789 
 
 keterangan tambahan -> 
-1. untuk yg email supeadmin itu memiliki akses admin (is_admin=true) , akun ini bisa melihat jumlah semua users yang terdaftar di aplikasi ini dan jumlah organisasi yang terdaftar di aplikasi ini (route = "/dashboard-admin").
-2. akun biasa, sudah ada 1 Organisasi didalam nya, dan di dalam 1 organisasi tersebut sudah ada berbagai macam departement/bagian, posisi, anggota, program kerja, tugas, dan kegiatan.
+1. akun biasa, sudah ada 1 Organisasi didalam nya, dan di dalam 1 organisasi tersebut sudah ada berbagai macam departement/bagian, posisi, anggota, program kerja, tugas, dan kegiatan.
+2. untuk yg email supeadmin itu memiliki akses admin (is_admin=true) , akun ini bisa melihat jumlah semua users yang terdaftar di aplikasi ini dan jumlah organisasi yang terdaftar di aplikasi ini (route = "/dashboard-admin").
 3. akun biasa, belum terdapat apa-apa
 
 
-- Video tutorial Instalasi : 
 - Repository Github : https://github.com/naufalharitsprasetia/IdolaOrganizer
-- Download Laragon : https://laragon.org/download/
+- LINK FOR DEMO (WEBSITE) = https://idolaorganizer.no-rise.my.id/
 
-
-AUTHOR : -Naufal Harits -Alvin Arya -Mohamad Farhat
+AUTHOR : - Naufal Harits - Alvin Arya - Mohamad Farhat
 Nama Tim : DAWET (Darussalam Web Community)
 Nama Project : IdolaOrganizer
+
+Dll :
+- Download Laragon : https://laragon.org/download/
+- Download Composer : https://getcomposer.org/
