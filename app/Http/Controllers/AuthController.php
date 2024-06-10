@@ -123,12 +123,20 @@ class AuthController extends Controller
         $rules = [
             'name' => 'required',
             'gender' => 'required',
+            'password' => 'nullable',
         ];
         $request->validate($rules);
         $user->update([
             'name' => $request->name,
             'gender' => $request->gender,
         ]);
+        if ($request->password !== null) {
+            $userPassword = Hash::make($request->password);
+            $user->update([
+                'password' => $userPassword,
+            ]);
+        }
+        // dd($request);
         Alert::alert('Berhasil', 'Akun berhasil diperbaharui!', 'Success');
         return redirect()->route('profile')->with('success', 'Akun berhasil diperbaharui');
     }

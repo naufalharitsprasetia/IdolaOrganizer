@@ -106,7 +106,7 @@
                         src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="">
                     <div class="mt-4 flex items-center justify-center space-x-3 text-base">
-                        <div class="font-semibold text-gray-900">Alvin Arya</div>
+                        <div class="font-semibold text-gray-900">Dzulfikar</div>
                         <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
                             <circle cx="1" cy="1" r="1" />
                         </svg>
@@ -150,13 +150,13 @@
             <h2 class="text-center text-lg font-semibold leading-8 text-gray-900">Project ini didukung oleh :</h2>
             <div
                 class="mx-auto mt-10 grid max-w-lg grid-cols-4 justify-center content-center items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-4 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-4">
-                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/dawet.png" alt="Transistor"
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/dawet.PNG" alt="Dawet"
                     width="200" height="100">
-                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/hmp.png" alt="Reform"
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/hmp.png" alt="Himatif"
                     width="158" height="48">
-                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/ti.png" alt="Tuple"
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/ti.png" alt="TI"
                     width="158" height="48">
-                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/unida.png" alt="SavvyCal"
+                <img class="col-span-2 max-h-40 w-full object-contain lg:col-span-1" src="/img/unida.png" alt="Unida"
                     width="158" height="48">
             </div>
         </div>

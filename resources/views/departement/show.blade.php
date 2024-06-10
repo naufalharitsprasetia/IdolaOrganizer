@@ -205,17 +205,18 @@
                                     </td>
                                     <td class=" bg-white">
                                         <div class="flex flex-wrap gap-1 bg-white">
-                                            <a href=""
+                                            <a href="/task/{{ $task->id }}?org={{ $organization->id }}"
                                                 class="text-white bg-blue-600 px-2 py-1 rounded-lg hover:opacity-80">Detail</a>
 
-                                            <a href=""
+                                            <a href="/task-edit/{{ $task->id }}?dept={{ $departement->id }}"
                                                 class="text-white bg-yellow-500 px-2 py-1 rounded-lg hover:opacity-80">Edit</a>
-                                            <form action="" method="post" class="d-inline">
+                                            <form action="/task-delete/{{ $task->id }}?dept={{ $departement->id }}"
+                                                class="inline" id="formDelete-{{ $task->id }}" method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button
-                                                    class=" text-white bg-rose-600 px-2 py-1 rounded-lg hover:opacity-80"
-                                                    onclick="return confirm('Are you Sure?')">Delete</button>
+                                                <button type="button" onclick="deleteConfirm({{ $task->id }})"
+                                                    class="text-white bg-rose-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus
+                                                </button>
                                             </form>
                                         </div>
                                     </td>
@@ -240,7 +241,7 @@
         <div class="kegiatan mb-7">
             <p class="text-xl font-semibold mt-1 mb-2 mx-3">Kegiatan : </p>
             <div class="button-primary inline-block">
-                <a href="/event/create?dept={{ $departement->id }}" class="">Tambah kegiatan</a>
+                <a href="/event-create?dept={{ $departement->id }}" class="">Tambah kegiatan</a>
             </div>
 
             {{-- Table --}}
@@ -290,15 +291,15 @@
                                         <div class="flex flex-wrap gap-1 bg-white">
                                             <a href="/event/{{ $event->id }}?org={{ $organization->id }}"
                                                 class="text-white bg-blue-600 px-2 py-1 rounded-lg hover:opacity-80">Detail</a>
-
-                                            <a href=""
+                                            <a href="/event/edit/{{ $event->id }}?dept={{ $departement->id }}"
                                                 class="text-white bg-yellow-500 px-2 py-1 rounded-lg hover:opacity-80">Edit</a>
-                                            <form action="" method="post" class="d-inline">
+                                            <form action="/event/delete/{{ $event->id }}?dept={{ $departement->id }}"
+                                                class="inline" id="formDelete-{{ $event->id }}" method="POST">
                                                 @method('delete')
                                                 @csrf
-                                                <button
-                                                    class=" text-white bg-rose-600 px-2 py-1 rounded-lg hover:opacity-80"
-                                                    onclick="return confirm('Are you Sure?')">Delete</button>
+                                                <button type="button" onclick="deleteConfirm({{ $event->id }})"
+                                                    class="text-white bg-rose-600 px-2 py-1 rounded-lg hover:opacity-80">Hapus
+                                                </button>
                                             </form>
                                         </div>
                                     </td>

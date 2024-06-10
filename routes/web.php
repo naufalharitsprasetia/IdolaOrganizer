@@ -97,18 +97,22 @@ Route::middleware(['auth', 'check.organization.access'])->group(
         // Route::get('/task', [TaskController::class, 'index'])->name('task.index');
         Route::get('/task/create', [TaskController::class, 'create'])->name('task.create');
         Route::post('/task/create', [TaskController::class, 'store'])->name('task.store');
+        Route::get('/task/{task}', [TaskController::class, 'show'])->name('task.show');
+        Route::get('/task-edit/{task}', [TaskController::class, 'edit'])->name('task.edit');
+        Route::put('/task-edit/{task}', [TaskController::class, 'update'])->name('task.update');
+        Route::delete('/task-delete/{task}', [TaskController::class, 'destroy'])->name('task.destroy');
         // Event
         Route::get('/event', [EventController::class, 'index'])->name('event.index');
         Route::get('/eventlist', [EventController::class, 'getEvents'])->name('event.list');
         Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
-        Route::get('/event/create', [EventController::class, 'create'])->name('event.create');
-        Route::post('/event/create', [EventController::class, 'store'])->name('event.store');
+        Route::get('/event-create', [EventController::class, 'create'])->name('event.create');
+        Route::post('/event-create', [EventController::class, 'store'])->name('event.store');
         Route::get('/event/edit/{event}', [EventController::class, 'edit'])->name('event.edit');
         Route::put('/event/edit/{event}', [EventController::class, 'update'])->name('event.update');
         Route::delete('/event/delete/{event}', [EventController::class, 'destroy'])->name('event.destroy');
-        // Keuangan (ROLE = bendahara)
-        Route::get('/keuangan', [FinancialController::class, 'index'])->name('keuangan.index');
-        Route::get('/keuangan/create', [FinancialController::class, 'create'])->name('keuangan.create');
-        Route::post('/keuangan/create', [FinancialController::class, 'store'])->name('keuangan.store');
+        // // Keuangan (ROLE = bendahara)
+        // Route::get('/keuangan', [FinancialController::class, 'index'])->name('keuangan.index');
+        // Route::get('/keuangan/create', [FinancialController::class, 'create'])->name('keuangan.create');
+        // Route::post('/keuangan/create', [FinancialController::class, 'store'])->name('keuangan.store');
     }
 );

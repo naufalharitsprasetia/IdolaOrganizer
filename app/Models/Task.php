@@ -12,7 +12,7 @@ class Task extends Model
 
     public function departement()
     {
-        return $this->belongsTo(Departement::class);
+        return $this->belongsTo(Departement::class, "departements_id");
     }
     public function member()
     {

@@ -8,7 +8,7 @@
             {{ $departement->name_departement }} - ({{ $organization->singkatan_organization }})</h2>
 
         {{-- Form Start --}}
-        <form class="space-y-6" action="/event/create" method="POST">
+        <form class="space-y-6" action="/event-create" method="POST">
             @csrf
             <input type="hidden" name="departements_id" value="{{ $departement->id }}">
             <input type="hidden" name="organization_id" value="{{ $organization->id }}">
