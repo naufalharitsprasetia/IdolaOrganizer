@@ -42,7 +42,7 @@
                             @if ($organization->logo_organization == 'img/dema.png')
                                 <img src="/img/dema.png" class="w-28 self-center my-6" alt="">
                             @else
-                                <img src="{{ asset('/storage.' . '/' . $organization->logo_organization) }}"
+                                <img src="{{ asset('/storage/' . $organization->logo_organization) }}"
                                     class="w-28 self-center my-6" alt="">
                             @endif
                             <hr>
